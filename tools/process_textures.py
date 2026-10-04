@@ -42,6 +42,9 @@ NON_TILEABLE = {
     "fabric_tapestry",
 }
 
+# خامات تُقصّ من خلفية سوداء
+BLACK_KEY_IDS = {"decal_salt_bloom"}
+
 # خامات شفافة (تُقصّ خلفيتها البيضاء إلى alpha)
 ALPHA_IDS = {
     "water_foam_shore",
@@ -118,6 +121,14 @@ def derive_pbr(img, out_base, strength, size):
     ao = np.clip(blur ** 0.75, 0.0, 1.0)
     Image.fromarray((ao * 255).astype("uint8"), "L").resize((size, size), Image.LANCZOS) \
         .save(out_base + "_ao.png")
+
+
+def key_black_to_alpha(img, thr=24, feather=14):
+    """تحويل الخلفية السوداء إلى قناة شفافية."""
+    a = np.asarray(img.convert("RGB"), dtype=np.float32)
+    lum = a.mean(axis=2)
+    alpha = np.clip((lum - thr) / feather * 255.0, 0, 255)
+    return Image.fromarray(np.dstack([a, alpha]).astype("uint8"), "RGBA")
 
 
 def key_white_to_alpha(img, thr=236, feather=14):
@@ -197,7 +208,10 @@ def main():
             q.save(base + "_albedo.png", optimize=True)
 
         if args.alpha_decals and tid in ALPHA_IDS:
-            key_white_to_alpha(im).save(base + "_alpha.png")
+            if tid in BLACK_KEY_IDS:
+                key_black_to_alpha(im).save(base + "_alpha.png")
+            else:
+                key_white_to_alpha(im).save(base + "_alpha.png")
 
         if args.derive_pbr:
             derive_pbr(im, base, NORMAL_STRENGTH.get(tid, DEFAULT_STRENGTH), im.size[0])
