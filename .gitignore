@@ -1,10 +1,12 @@
 # ============ Castle & Palace — تجاهل المخرجات الثقيلة المُولَّدة محليًا ============
 # الخامات المصدرية (Albedo) داخل Git — الخرائط المشتقة تُولَّد بأمر واحد:
+#   python3 tools/process_textures.py --src textures/src --size 1024 --seamless --derive-pbr
 textures/src/*_normal.png
 textures/src/*_roughness.png
 textures/src/*_ao.png
 textures/src/*_height.png
 textures/src/*_alpha.png
+textures/dist/
 
 # مخرجات البناء/المعالجة (تُعاد بأوامر tools/)
 build/txd/
@@ -12,6 +14,7 @@ build/*.obj
 build/*.mtl
 renders/*.png
 *.blend1
+dist/
 __pycache__/
 .venv/
 .DS_Store

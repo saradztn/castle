@@ -1,0 +1,71 @@
+<meta>
+    <info author="Arena Agent — Castle &amp; Palace Project" name="Castle &amp; Palace (Coastal Castle-City)"
+          version="1.0.0" type="script"
+          description="مدينة قلعة ساحلية كاملة: قصر/كاتدرائية، 3 حلقات أسوار، 6 مصاطب بلدة، مرفأ، جسر مقوّس، شلالان — مع نظام نهار/ليل وإضاءة نقطية من الفوانيس"/>
+
+    <!-- ===== الإعداد المشترك ===== -->
+    <script src="shared/config.lua" type="shared"/>
+
+    <!-- ===== السيرفر ===== -->
+    <script src="server/s_time.lua"      type="server"/>
+    <script src="server/s_commands.lua"  type="server"/>
+
+    <!-- ===== العميل ===== -->
+    <script src="client/loader.lua"      type="client"/>
+    <script src="client/lighting.lua"    type="client"/>
+    <script src="client/gameplay.lua"    type="client"/>
+    <script src="client/hud.lua"         type="client"/>
+
+    <!-- ===== الشيدرات (قوة الإضاءة) ===== -->
+    <file src="shaders/pointlight.fx"/>
+    <file src="shaders/glow.fx"/>
+
+    <!-- ===== البيانات المولّدة من الموديل ===== -->
+    <file src="data/lamps.json"/>
+    <file src="data/spawns.json"/>
+    <file src="data/parts.json"/>
+
+    <!-- ===== خامات PBR (تستبدل عبر الشيدر على موديلنا) ===== -->
+    <file src="textures/stone_sandstone_ashlar_albedo.png"/>
+    <file src="textures/stone_granite_wall_albedo.png"/>
+    <file src="textures/plaster_lime_town_albedo.png"/>
+    <file src="textures/roof_slate_albedo.png"/>
+    <file src="textures/roof_tile_terracotta_albedo.png"/>
+    <file src="textures/roof_shingle_wood_albedo.png"/>
+    <file src="textures/wood_oak_timber_albedo.png"/>
+    <file src="textures/wood_oak_door_albedo.png"/>
+    <file src="textures/rock_cliff_strata_albedo.png"/>
+    <file src="textures/terrain_grass_albedo.png"/>
+    <file src="textures/terrain_dirt_road_albedo.png"/>
+    <file src="textures/water_ocean_albedo.png"/>
+    <file src="textures/water_foam_shore_albedo.png"/>
+    <file src="textures/stone_cobble_street_albedo.png"/>
+    <file src="textures/stone_flagstone_floor_albedo.png"/>
+    <file src="textures/stone_quay_granite_albedo.png"/>
+    <file src="textures/marble_floor_light_albedo.png"/>
+    <file src="textures/metal_iron_forged_albedo.png"/>
+    <file src="textures/metal_gilded_bronze_albedo.png"/>
+    <file src="textures/metal_copper_verdigris_albedo.png"/>
+    <file src="textures/fabric_banner_heraldry_albedo.png"/>
+    <file src="textures/glass_leaded_pane_emissive_albedo.png"/>
+    <file src="textures/foliage_leaves_albedo.png"/>
+
+    <!-- ===== الموديلات: ضع ملفاتك هنا بعد التحويل =====
+         models/castle_city.dff  (الهندسة الكاملة أو مقسّمة)
+         models/castle_city.txd  (اختياري إن استخدمت استبدال الخامات بالشيدر)
+         models/castle_city.col  (التصادم)
+         models/city_lod1.dff | city_lod2.dff | city_lod3.dff  (مستويات LOD)
+    -->
+    <file src="models/castle_city.dff"/>
+    <file src="models/castle_city.txd"/>
+    <file src="models/castle_city.col"/>
+    <file src="models/city_lod1.dff"/>
+    <file src="models/city_lod2.dff"/>
+    <file src="models/city_lod3.dff"/>
+
+    <settings>
+        <setting name="*castle-lighting-mode" value="auto" desc="auto | day | night"/>
+    </settings>
+
+    <min_mta_version client="1.6.0" server="1.6.0"/>
+</meta>
