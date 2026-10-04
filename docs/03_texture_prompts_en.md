@@ -254,6 +254,7 @@ Woven heraldic banner cloth, tall 1 by 3 composition filled edge to edge, deep c
 - `fabric_tapestry`: `Woven medieval wall tapestry, horizontal composition filled edge to edge, muted wool dyes — red #7A2B2B, green #3E5548, gold #C8A24A, indigo #2F3E6B — a geometric border framing a central crenellated-tower motif, coarse weave, faded and dusty, a few repaired threads, no text, no faces, no border.`
 - `wood_props_kit`: `[PREFIX] Prop timber surface, mixed worn oak and pine boards for barrels, crates, tables, ladders and a crane frame, warm brown #6B4A2F with nicks, nail heads and tool marks, matte dusty finish. [STYLE LOCK]`
 
+
 ---
 
 ## 4. ملاحظات فنية

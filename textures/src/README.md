@@ -1,23 +1,22 @@
-# textures/src — هنا تضع خاماتك
+# textures/src — الخامات (كل خامة في صورة منفصلة)
 
-ارفع ملفاتك بالأسماء الموجودة في `docs/03_texture_prompts_en.md` (أو في الأطلس):
+كل خامة تُولَّد **بصورة مستقلة** بالذكاء الاصطناعي وتُحفظ هنا باسم:
 
 ```
-textures/src/
-├── stone_sandstone_ashlar_albedo.png
-├── stone_sandstone_ashlar_normal.png
-├── stone_sandstone_ashlar_roughness.png
-├── stone_sandstone_ashlar_ao.png
-├── roof_slate_albedo.png
-└── ... (38 خامة × القنوات المطلوبة)
+textures/src/<id>_albedo.png        ← صورة الخامة الأساسية (الملوّن)
 ```
 
-**أو الأسهل:** ضع صورة الأطلس الواحدة في `textures/atlas/atlas.png` ثم شغّل:
+ثم يولّد السكربت تلقائيًا بجوارها: `<id>_normal.png` و `<id>_roughness.png` و `<id>_ao.png`
+(+ `<id>_alpha.png` للخامات الشفافة)، وهي ملفات مشتقّة لا تُرفع إلى Git.
+
+## إعادة التوليد / المعالجة بأمر واحد
 
 ```bash
 pip install --break-system-packages numpy pillow
-python3 tools/slice_atlas.py textures/atlas/atlas.png --grid 6x4 --out textures/src --size 2048 --seamless --derive-pbr
+python3 tools/process_textures.py --src textures/src --size 1024 --seamless --derive-pbr --alpha-decals --contact-sheet textures/preview/contact_sheet.jpg
 ```
 
-وسيقصّها إلى 24 خامة مسمّاة ويولّد Normal/Roughness/AO لكل واحدة تلقائيًا.
-(الخرائط المشتقة مُستثناة من Git لأنها تُولَّد بأمر واحد — انظر `.gitignore`.)
+* `--seamless` : مزج الحواف لجعل الخامة قابلة للتكرار في الاتجاهين.
+* `--derive-pbr` : استخراج Normal / Roughness / AO من صورة الألوان.
+* `--alpha-decals` : تحويل خلفية الـdecals البيضاء إلى قناة شفافية.
+* `--contact-sheet` : صورة معاينة واحدة تجمع كل الخامات (للاستعراض فقط).

@@ -18,10 +18,9 @@
 | [`prompts/01_reference_sheets_ready.txt`](prompts/01_reference_sheets_ready.txt) | ✅ **جديد — انسخ والصق** | كل أوراق المرجع (A→I) + الداخليات الأربع عشرة، **مُجمَّعة كاملة بلا أقواس** |
 | [`prompts/02_textures_ready.txt`](prompts/02_textures_ready.txt) | ✅ **جديد — انسخ والصق** | الـ38 خامة PBR كاملة (بادئة + وصف + قفل أسلوب) جاهزة للنسخ المباشر |
 | [`prompts/03_short_version.txt`](prompts/03_short_version.txt) | ✅ **جديد** | نسخ مختصرة (450 / 900 حرف + نسخة Midjourney) للمولّدات محدودة الأحرف |
-| [`prompts/04_ALL_TEXTURES_SINGLE_PROMPT.txt`](prompts/04_ALL_TEXTURES_SINGLE_PROMPT.txt) | ✅ **جديد ★** | **البرومبت الواحد الشامل**: كل الخامات في **صورة واحدة** (أطلس 6×4 = 24 خامة) + نسختا 4×4 و2×3 البديلتان |
-| [`tools/slice_atlas.py`](tools/slice_atlas.py) | ✅ **جديد** | سكربت يقطّع الأطلس إلى خامات منفصلة + يولّد **Normal/Roughness/AO** آليًا |
-| [`textures/atlas/atlas_6x4.png`](textures/atlas/atlas_6x4.png) | ✅ **نموذج مُنتَج** | الأطلس التجريبي (24 خامة) — نتيجة تجربة فعلية للبرومبت |
-| [`textures/preview/`](textures/preview) | ✅ | 24 صورة مصغّرة + الأطلس الكامل للمعاينة السريعة |
+| [`tools/process_textures.py`](tools/process_textures.py) | ✅ **جديد ★** | معالجة الخامات الفردية: اقتطاع مربّع + Seamless + توليد **Normal/Roughness/AO** + لوح معاينة |
+| [`textures/src/`](textures/src) | 🚧 **قيد التوليد** | الخامات — **كل خامة بصورة مستقلة** بالذكاء الاصطناعي (10 من 38 جاهزة حتى الآن) |
+| [`textures/preview/contact_sheet.jpg`](textures/preview/contact_sheet.jpg) | ✅ | لوح معاينة يجمع كل الخامات المُولَّدة |
 
 > تنبيه: الموجز السابق (قلعة داخلية بأربعة أبراج) **أُلغي بالكامل** — كل شيء الآن مبني على الصورة المرجعية.
 
@@ -44,24 +43,24 @@ Cinematic photorealistic aerial view of a colossal medieval castle-city built on
 
 ## 📦 ما أطلبه منك الآن
 
-### 🅰️ الأسهل — برومبت واحد لكل الخامات (صورة أطلس واحدة)
-انسخ البرومبت من [`prompts/04_ALL_TEXTURES_SINGLE_PROMPT.txt`](prompts/04_ALL_TEXTURES_SINGLE_PROMPT.txt) → يحصل مولّد الصور على **لوحة واحدة فيها 24 خامة** (6×4). ارفع الصورة في `textures/atlas/atlas.png` وسأقصّها آليًا إلى 24 خامة مسماة + أولّد لها Normal/Roughness/AO.
-
-### 🅱️ البديل — خامات فردية 4K
-| # | المطلوب | المكان |
+### الخامات — **كل خامة بصورة مستقلة** (يتولاها الوكيل بالذكاء الاصطناعي)
+| # | البند | الحالة |
 |---|---|---|
-| 1 | صور إضافية عالية الدقة (بطهورية/جوية/ليلي/مساقط) إن أمكن | `reference/` أو مرفقة هنا |
-| 2 | الخامات المولّدة (PBR 4K) بالأسماء في `docs/03` | `textures/src/` |
-| 3 | كلمة **«تم الرفع»** | — وسأباشر آليًا |
+| 1 | الدفعة الأولى: 10 خامات (حجر رملي، غرانيت، حجر بحري مطحلب، جص، رصيف، حصى، أردواز، قرميد، شينجل خشبي، عوارض بلوط) | ✅ **مُولَّدة ومعالجة** |
+| 2 | الدفعات التالية: 28 خامة متبقية (أبواب، جرف، عشب، بحر، رخام، أرضيات، تلبيس جوز، جوخ، سجاد، جلد، حديد، نحاس، زجاج، رايات، decals…) | 🚧 **10 خامات في كل جولة حتى الاكتمال** |
+| 3 | صور مرجعية إضافية عالية الدقة (بطهورية/جوية/ليلي/مساقط) — اختياري لكن يُحسّن المطابقة | ⏳ `reference/` |
+| 4 | لو أردت توليد أي خامة بنفسك: اسم الملف `<id>_albedo.png` في `textures/src/` ثم قل «تم الرفع» | ⏳ |
+
+**كل خامة تُولَّد وتُعالج آليًا:** اقتطاع مربّع ← Seamless ← Albedo ← **Normal + Roughness + AO** ← لوح معاينة.
+(الخرائط المشتقّة لا تُرفع إلى Git لأنها تُولَّد بأمر واحد: `python3 tools/process_textures.py --src textures/src --size 1024 --seamless --derive-pbr --alpha-decals`.)
 
 ```
 saradztn/castle
-├── reference/     ←  الصور المرجعية الإضافية (A..F)
-├── textures/atlas/atlas.png   ←  لوحة الخامات الواحدة (الطريقة الأسهل)
-└── textures/src/  ←  أو الخامات الفردية: stone_sandstone_ashlar_albedo.png ... إلخ
+├── reference/     ←  الصور المرجعية (A..F) إن رفعتها
+├── textures/src/  ←  الخامات: كل خامة في صورة منفصلة  <id>_albedo.png
+├── textures/preview/contact_sheet.jpg  ←  معاينة كل الخامات
+└── tools/process_textures.py           ←  المعالجة وتوليد الخرائط
 ```
-
----
 
 ## 🔧 خط الأنابيب بعد الرفع
 

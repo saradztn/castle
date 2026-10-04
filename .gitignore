@@ -1,21 +1,15 @@
-# ============ Castle & Palace — تجاهل المخرجات الثقيلة المُولَّدة محليًا ============
-# الخامات المصدرية 4K التي ترفعها أنت: textures/src/*.png (مقبولة داخل Git)
-# لكن الخرائط المشتقة آليًا ثقيلة ولا داعي لرفعها (تُولَّد بأمر واحد):
+# ============ Castle & Palace — تجاهل المخرجات المُولَّدة ثقيلة الحجم ============
+# الخامات (Albedo) داخل Git — الخرائط المشتقة تُولَّد بأمر واحد:
 textures/src/*_normal.png
 textures/src/*_roughness.png
 textures/src/*_ao.png
 textures/src/*_height.png
+textures/src/*_alpha.png
 textures/dist/
-textures/atlas/*_preview.png
-
-# مخرجات البناء والتوليد
+*.blend1
 build/
 dist/
-*.blend1
-*.log
-
-# ملفات النظام والبيئة
-.DS_Store
-Thumbs.db
 __pycache__/
 .venv/
+.DS_Store
+Thumbs.db
