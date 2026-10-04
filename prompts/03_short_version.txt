@@ -1,0 +1,38 @@
+================================================================================
+  نسخ مختصرة — للمولّدات ذات حدّ الأحرف القصير
+  (Midjourney / أدوات لا تقبل أكثر من ~1200 حرف)
+================================================================================
+
+[1] مختصر جدًا (≈ 450 حرف) — للاستخدام السريع
+---
+Cinematic aerial view of a colossal medieval castle-city on a rocky coastal promontory, spire-crowned palace-cathedral on the summit, three concentric fortified wall rings, six terraced town levels with slate roofs, harbour with quays and sailing ships, a long arched causeway bridge, two great waterfalls into the sea, golden-hour light, sea mist, snow-capped mountains on the horizon, photorealistic architectural visualization, ultra-detailed, 4K
+---
+
+[2] متوسط (≈ 900 حرف) — جودة أفضل
+---
+Cinematic photorealistic aerial view of a colossal medieval castle-city built on a rocky coastal promontory, three-quarter view from the south-east. Spire-crowned palace-cathedral on the summit with a 95 m central spire, six conical-roofed spires, two round towers and flying buttresses. Three concentric granite curtain walls with machicolated round towers and conical slate roofs descending the rock. Six terraced town levels, 320 houses with steep slate roofs, stepped alleys, arched bridges, a mid-town church with a 34 m bell tower. Harbour below with stone quays, timber jetties, warehouses, a crane and moored three-masted sailing ships. A long arched stone causeway bridge with eight cutwater arches entering from the right. Two great waterfalls of about 60 m and 35 m pouring into the sea, terraced royal gardens with a fountain. Warm sandstone #BFA57E and grey granite, dark blue-grey slate, crimson and gold banners, teal-green sea. Late golden hour, warm raking light, cool blue shadows, light haze, sea mist. Ultra-detailed, physically based, 4K
+---
+
+[3] نسخة Midjourney (مع البارامترات)
+---
+Cinematic aerial view of a colossal medieval castle-city on a rocky coastal promontory, spire-crowned palace-cathedral on the summit, three concentric fortified wall rings with round towers and conical slate roofs, six terraced town levels, harbour with quays and three-masted sailing ships, long arched stone causeway bridge, two great waterfalls into the sea, terraced royal gardens, golden hour, sea mist, snow-capped mountains on the horizon, warm sandstone and grey granite, dark blue-grey slate roofs, crimson and gold banners, photorealistic architectural visualization, ultra-detailed --ar 3:2 --style raw --stylize 250 --v 6
+---
+
+[4] نسخة مختصرة للمساقط والظلّي (قياس 3D)
+---
+Orthographic technical sheet, white background, three views: sea-facing elevation of a coastal castle-city promontory showing stratified cliffs, three curtain wall rings, round towers with conical roofs, terrace houses, harbour quays and the spire-crowned palace; a solid black silhouette of the same; and a cross-section showing the summit plateau, palace block, stepped terraces and rock-cut cellars. Include a 1.8 m human figure, a 5/10/50 m scale bar and a thin ground line. Hard clean edges, no perspective, no shadows, no interior detail in the silhouette
+---
+
+[5] نسخة مختصرة للمنظر الليلي
+---
+Photorealistic night view of a coastal castle-city on a rocky promontory from the same aerial angle, thousands of warm orange window lights across the terraced town, torches and lanterns along the walls, quays and causeway, braziers on the spires, lighthouse beam sweeping the sea, cool blue moonlight and stars, faint warm reflections on the water, thin glowing mist, readable silhouettes, film-like exposure, no fantasy glow, 4K
+---
+
+[6] نسخة مختصرة لكل داخلية (قالب)
+---
+<اسم الغرفة> in a medieval coastal castle-palace, warm torch and candle light, stone walls with moss and salt weathering, dark oak and carved stone, leaded windows, worn flagstone floor, photorealistic interior architectural visualization, ultra-detailed, 4K, no text, no watermark
+  · استبدل <اسم الغرفة> بواحدة من: gatehouse passage / inner courtyard with a tiered fountain /
+    state corridor with crimson carpet / royal bedchamber / great library / dungeon corridor /
+    great dining hall / castle kitchens / armoury / guest chamber / royal terraced gardens /
+    round tower interior with a spiral stair / secret passage / vaulted wine cellars
+================================================================================

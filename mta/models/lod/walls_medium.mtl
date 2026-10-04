@@ -1,0 +1,92 @@
+newmtl mat_rock
+Kd 0.400 0.390 0.370
+map_Kd textures/src/rock_cliff_strata_albedo.png
+
+newmtl mat_rock_wet
+Kd 0.300 0.320 0.310
+map_Kd textures/src/stone_seaweathered_mossy_albedo.png
+
+newmtl mat_grass
+Kd 0.300 0.400 0.210
+map_Kd textures/src/terrain_grass_albedo.png
+
+newmtl mat_granite
+Kd 0.440 0.440 0.450
+map_Kd textures/src/stone_granite_wall_albedo.png
+
+newmtl mat_sandstone
+Kd 0.800 0.690 0.520
+map_Kd textures/src/stone_sandstone_ashlar_albedo.png
+
+newmtl mat_slate
+Kd 0.290 0.320 0.360
+map_Kd textures/src/roof_slate_albedo.png
+
+newmtl mat_terracotta
+Kd 0.680 0.440 0.290
+map_Kd textures/src/roof_tile_terracotta_albedo.png
+
+newmtl mat_plaster
+Kd 0.700 0.650 0.560
+map_Kd textures/src/plaster_lime_town_albedo.png
+
+newmtl mat_wood
+Kd 0.440 0.320 0.210
+map_Kd textures/src/wood_oak_timber_albedo.png
+
+newmtl mat_cobble
+Kd 0.440 0.420 0.390
+map_Kd textures/src/stone_cobble_street_albedo.png
+
+newmtl mat_quay
+Kd 0.520 0.510 0.480
+map_Kd textures/src/stone_quay_granite_albedo.png
+
+newmtl mat_water
+Kd 0.130 0.340 0.400
+map_Kd textures/src/water_ocean_albedo.png
+
+newmtl mat_foam
+Kd 0.950 0.960 0.970
+map_Kd textures/src/water_foam_shore_albedo.png
+
+newmtl mat_copper
+Kd 0.320 0.520 0.430
+map_Kd textures/src/metal_copper_verdigris_albedo.png
+
+newmtl mat_gilded
+Kd 0.850 0.680 0.300
+map_Kd textures/src/metal_gilded_bronze_albedo.png
+
+newmtl mat_marble
+Kd 0.900 0.880 0.820
+map_Kd textures/src/marble_floor_light_albedo.png
+
+newmtl mat_banner
+Kd 0.550 0.160 0.160
+map_Kd textures/src/fabric_banner_heraldry_albedo.png
+
+newmtl mat_dirt
+Kd 0.560 0.490 0.380
+map_Kd textures/src/terrain_dirt_road_albedo.png
+
+newmtl mat_window
+Kd 0.620 0.740 0.720
+map_Kd textures/src/glass_leaded_pane_albedo.png
+
+newmtl mat_window_lit
+Kd 1.000 0.780 0.450
+map_Kd textures/src/glass_leaded_pane_emissive_albedo.png
+
+newmtl mat_iron
+Kd 0.160 0.160 0.170
+map_Kd textures/src/metal_iron_forged_albedo.png
+
+newmtl mat_tapestry
+Kd 0.550 0.420 0.300
+map_Kd textures/src/fabric_tapestry_albedo.png
+
+newmtl mat_leather
+Kd 0.380 0.260 0.160
+map_Kd textures/src/leather_hide_albedo.png
+

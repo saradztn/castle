@@ -1,0 +1,54 @@
+<meta>
+    <info author="saradztn" name="Castle &amp; Palace — Coastal Castle City"
+          version="1.0.0" type="script"
+          description="قلعة وقصر بحجم مدينة كاملة: 39 خامة PBR، نظام LOD رباعي، إضاءة نهار/ليل ديناميكية، فكسات (شلالات، بحر، شعل، طيور، دخان)، 14 داخلية، وكاميرا سينمائية." />
+
+    <min_mta_version client="1.6.0" server="1.6.0" />
+
+    <!-- ===== إعدادات قابلة للتعديل من لوحة السيرفر ===== -->
+    <settings>
+        <setting name="*castle:autoTime" value="true" friendlyname="تبديل تلقائي نهار/ليل" accept="true,false" />
+        <setting name="*castle:dayHour" value="12" friendlyname="ساعة النهار" accept="0-23" />
+        <setting name="*castle:nightHour" value="0" friendlyname="ساعة الليل" accept="0-23" />
+        <setting name="*castle:lights" value="7" friendlyname="عدد الأضواء الحقيقية القريبة" accept="0-8" />
+    </settings>
+
+    <!-- ===== الملفات المشتركة ===== -->
+    <file src="config.lua" />
+    <file src="assets/glow.png" />
+    <file src="assets/foam.png" />
+    <file src="assets/smoke.png" />
+    <file src="assets/flag.png" />
+
+    <!-- ===== الموديلات ===== -->
+    <file src="models/castle.dff" />
+    <file src="models/castle.txd" />
+    <file src="models/castle.col" />
+
+    <!-- ===== مستويات LOD ===== -->
+    <file src="models/lod/castle_high.dff" />
+    <file src="models/lod/castle_medium.dff" />
+    <file src="models/lod/castle_low.dff" />
+    <file src="models/lod/castle_distant.dff" />
+
+    <!-- ===== الشيدرات ===== -->
+    <file src="shaders/window_emissive.fx" />
+    <file src="shaders/ocean.fx" />
+    <file src="shaders/terrain_detail.fx" />
+    <file src="shaders/night_grade.fx" />
+
+    <!-- ===== سكربتات العميل ===== -->
+    <script src="client/main.lua"       type="client" />
+    <script src="client/lighting.lua"   type="client" />
+    <script src="client/lights.lua"     type="client" />
+    <script src="client/fx.lua"         type="client" />
+    <script src="client/shaders.lua"    type="client" />
+    <script src="client/interior.lua"   type="client" />
+    <script src="client/camera.lua"     type="client" />
+
+    <!-- ===== سكربتات السيرفر ===== -->
+    <script src="server/main.lua" type="server" />
+
+    <export function="setCastleLighting" type="client" />
+    <export function="getCastleProgress" type="client" />
+</meta>

@@ -1,0 +1,18 @@
+# ============ Castle & Palace — تجاهل المخرجات الثقيلة المُولَّدة محليًا ============
+# الخامات المصدرية (Albedo) داخل Git — الخرائط المشتقة تُولَّد بأمر واحد:
+textures/src/*_normal.png
+textures/src/*_roughness.png
+textures/src/*_ao.png
+textures/src/*_height.png
+textures/src/*_alpha.png
+
+# مخرجات البناء/المعالجة (تُعاد بأوامر tools/)
+build/txd/
+build/*.obj
+build/*.mtl
+renders/*.png
+*.blend1
+__pycache__/
+.venv/
+.DS_Store
+Thumbs.db
