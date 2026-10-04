@@ -66,8 +66,7 @@ local function loadAll()
     end
 
     -- LOD متعدد المستويات: كل جزء عالي يُربط ببديله الأدنى
-    local high = createObject(allocModel(), 0, 0, 0)
-    -- (نموذج LOD يُحمَّل بنفس الطريقة — يُستبدل موديله في loadPart إن رغبت)
+    -- (مستويات LOD تُحمَّل في loadPart عبر lodIndex وتُربط هنا بـ setLowLODElement)
     for i, el in ipairs(elements) do
         local lowEl = elements[i + 1] or elements[i]
         if lowEl and lowEl ~= el then setLowLODElement(lowEl, el) end

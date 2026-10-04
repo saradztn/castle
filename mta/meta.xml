@@ -19,6 +19,7 @@
     <file src="assets/foam.png" />
     <file src="assets/smoke.png" />
     <file src="assets/flag.png" />
+    <file src="data/lamps.json" />
 
     <!-- ===== الموديلات ===== -->
     <file src="models/castle.dff" />
@@ -36,11 +37,14 @@
     <file src="shaders/ocean.fx" />
     <file src="shaders/terrain_detail.fx" />
     <file src="shaders/night_grade.fx" />
+    <file src="shaders/pointlight.fx" />
+    <file src="shaders/glow.fx" />
 
     <!-- ===== سكربتات العميل ===== -->
     <script src="client/main.lua"       type="client" />
     <script src="client/lighting.lua"   type="client" />
-    <script src="client/lights.lua"     type="client" />
+    <script src="client/lights.lua"       type="client" />
+    <script src="client/pointlights.lua"  type="client" />
     <script src="client/fx.lua"         type="client" />
     <script src="client/shaders.lua"    type="client" />
     <script src="client/interior.lua"   type="client" />
@@ -51,4 +55,6 @@
 
     <export function="setCastleLighting" type="client" />
     <export function="getCastleProgress" type="client" />
+    <export function="setCastleLampBoost" type="client" />
+    <export function="getCastleLampCount" type="client" />
 </meta>

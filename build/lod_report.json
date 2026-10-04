@@ -1,9 +1,9 @@
 {
   "palace": {
-    "full": 1487,
-    "medium": 1405,
-    "low": 1106,
-    "distant": 740
+    "full": 2757,
+    "medium": 2636,
+    "low": 2250,
+    "distant": 1666
   },
   "town": {
     "full": 12618,
@@ -12,10 +12,10 @@
     "distant": 5082
   },
   "causeway": {
-    "full": 12871,
-    "medium": 11808,
-    "low": 9065,
-    "distant": 7086
+    "full": 13017,
+    "medium": 11954,
+    "low": 9211,
+    "distant": 7232
   },
   "walls": {
     "full": 6807,
@@ -30,9 +30,9 @@
     "distant": 2522
   },
   "cliff": {
-    "full": 2284,
-    "medium": 2279,
-    "low": 2105,
-    "distant": 1989
+    "full": 2404,
+    "medium": 2399,
+    "low": 2225,
+    "distant": 2109
   }
 }

@@ -1,9 +1,9 @@
 newmtl mat_rock
-Kd 0.400 0.390 0.370
+Kd 0.340 0.350 0.355
 map_Kd textures/src/rock_cliff_strata_albedo.png
 
 newmtl mat_rock_wet
-Kd 0.300 0.320 0.310
+Kd 0.220 0.245 0.250
 map_Kd textures/src/stone_seaweathered_mossy_albedo.png
 
 newmtl mat_grass
@@ -43,7 +43,7 @@ Kd 0.520 0.510 0.480
 map_Kd textures/src/stone_quay_granite_albedo.png
 
 newmtl mat_water
-Kd 0.130 0.340 0.400
+Kd 0.085 0.295 0.415
 map_Kd textures/src/water_ocean_albedo.png
 
 newmtl mat_foam
@@ -89,4 +89,16 @@ map_Kd textures/src/fabric_tapestry_albedo.png
 newmtl mat_leather
 Kd 0.380 0.260 0.160
 map_Kd textures/src/leather_hide_albedo.png
+
+newmtl mat_rose
+Kd 0.780 0.720 0.620
+map_Kd textures/src/glass_stained_rose_albedo.png
+
+newmtl mat_mountain
+Kd 0.200 0.240 0.335
+map_Kd textures/src/rock_cliff_strata_albedo.png
+
+newmtl mat_snow
+Kd 0.700 0.770 0.880
+map_Kd textures/src/plaster_lime_town_albedo.png
 

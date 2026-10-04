@@ -105,9 +105,10 @@ def render(polys, out_path, W=1920, H=1200, eye=(900, -1500, 430), target=(30, -
         sun_col = np.array([0.30, 0.42, 0.75], np.float32)          # قمر بارد
         amb_col = np.array([0.10, 0.13, 0.24], np.float32)
     else:
-        sun = np.array([-0.62, 0.55, 0.56], np.float32); sun /= np.linalg.norm(sun)   # ذهبية من خلف-يسار
-        sun_col = np.array([1.25, 0.86, 0.52], np.float32)
-        amb_col = np.array([0.34, 0.42, 0.58], np.float32)
+        # ساعة ذهبية متأخرة: شمس منخفضة (≈20°) من خلف-يسار — كما في المرجع
+        sun = np.array([-0.74, 0.42, 0.33], np.float32); sun /= np.linalg.norm(sun)
+        sun_col = np.array([1.48, 0.88, 0.46], np.float32)
+        amb_col = np.array([0.26, 0.34, 0.52], np.float32)
 
     # ---------- خريطة الظل ----------
     shadow = None
@@ -130,6 +131,8 @@ def render(polys, out_path, W=1920, H=1200, eye=(900, -1500, 430), target=(30, -
         smap = np.full((SM, SM), 1e9, np.float32)
         order = np.argsort([-np.mean(zs[t]) for t in tris])
         for fi in order:
+            if tm[fi] in ("mountain", "snow"):      # الجبال لا تُلقي ظلًا على المدينة
+                continue
             t = tris[fi]
             xs, ys = sxs[t], sys_[t]
             x0, x1 = int(max(0, xs.min())), int(min(SM - 1, xs.max()))
@@ -157,7 +160,7 @@ def render(polys, out_path, W=1920, H=1200, eye=(900, -1500, 430), target=(30, -
     if mode == "night":
         top, hor = np.array([0.012, 0.02, 0.055]), np.array([0.05, 0.075, 0.14])
     else:
-        top, hor = np.array([0.21, 0.43, 0.76]), np.array([0.98, 0.83, 0.60])
+        top, hor = np.array([0.15, 0.37, 0.74]), np.array([0.96, 0.80, 0.62])
     grad = np.linspace(0, 1, H)[:, None] ** 1.35
     img[:] = top[None, None, :] * (1 - grad[..., None]) + hor[None, None, :] * grad[..., None]
     zbuf = np.full((H, W), 1e12, np.float32)
@@ -297,29 +300,52 @@ def render(polys, out_path, W=1920, H=1200, eye=(900, -1500, 430), target=(30, -
                     for dy in (-1, 0, 1):
                         taps = np.maximum(taps, smap[syi + dy, sxi + dx])
                 sh = np.where(d - 2.4 <= taps, 1.0, 0.30).astype(np.float32)
+                # خارج نطاق خريطة الظل: لا ظل (وإلا ظهرت أنماط بلاطات زائفة على البحر)
+                inb = (np.abs(px_) <= ex) & (np.abs(py_) <= ex) & (d < ex * 1.6)
+                sh = np.where(inb, sh, 1.0).astype(np.float32)
 
             ndl = max(0.0, float(np.dot(n, sun)))
             if mm == "water":
+                # سطح أفقي + موجات دقيقة للّمعان → لا تعريق على حدود البلاطات
+                wnx = 0.055 * np.sin(wp[..., 0] * 0.085 + wp[..., 1] * 0.052)
+                wny = 0.055 * np.cos(wp[..., 1] * 0.104 - wp[..., 0] * 0.041)
+                nw = np.stack([wnx, wny, np.ones_like(wnx)], axis=-1)
+                nw = nw / (np.linalg.norm(nw, axis=2, keepdims=True) + 1e-9)
                 vd = cam_pos[None, None, :] - wp
                 vd = vd / (np.linalg.norm(vd, axis=2, keepdims=True) + 1e-9)
                 h = sun[None, None, :] + vd
                 h = h / (np.linalg.norm(h, axis=2, keepdims=True) + 1e-9)
-                spec = np.maximum(0.0, (h * n[None, None, :]).sum(axis=2)) ** 70.0
-                lum = (amb_col * 0.55)[None, None, :] + (sun_col * (0.42 + 0.5 * ndl))[None, None, :] \
-                      + (sun_col[None, None, :] * spec[..., None] * 2.0)
+                spec = np.maximum(0.0, (h * nw).sum(axis=2)) ** 220.0
+                glint = np.maximum(0.0, (nw * sun[None, None, :]).sum(axis=2)) ** 3.0
+                lam = np.float32(0.34 + 0.34 * float(max(0.0, float(sun[2]))))
+                lum = (amb_col * 0.60)[None, None, :] + sun_col[None, None, :] * lam \
+                      + (sun_col[None, None, :] * spec[..., None] * 1.9)
             elif mm == "window_lit" and mode == "night":
                 lum = np.array([1.85, 1.25, 0.62], np.float32)[None, None, :] * np.ones(col.shape, np.float32)
-            elif mm in ("gilded", "copper", "window"):
+            elif mm in ("gilded", "copper"):
                 lum = (amb_col + sun_col * (0.30 + 0.70 * ndl) * float(sh.mean()) + 0.20)[None, None, :] * np.ones(col.shape, np.float32)
+            elif mm == "window":
+                # زجاج: ليلًا قاتم يعكس ضوء القمر، ونهارًا لمعة خفيفة (التوهّج للنوافذ المضيئة فقط)
+                lum = (amb_col * (0.9 if mode == "night" else 1.2)
+                       + sun_col * (0.35 + 0.65 * ndl) * float(sh.mean()))[None, None, :] * np.ones(col.shape, np.float32)
             else:
                 lum = (amb_col * (0.55 + 0.5 * (0.5 + 0.5 * float(n[2]))) + sun_col * ndl * sh[..., None])
             col = col * lum
             if mm == "foam":
                 col = col * 1.08 + 0.05
-            dcam = np.full_like(w0, Zc[t[0]])
-            k = 1.0 - np.exp(-np.maximum(0.0, dcam - 2600) * 0.00030)
-            fcol = (np.array([0.88, 0.79, 0.67], np.float32) if mode == "day" else np.array([0.035, 0.05, 0.10], np.float32))
-            col = col * (1 - k[..., None]) + fcol[None, None, :] * k[..., None]
+            # عمق لكل بكسل (وإلا ظهرت حدود بلاطات البحر/الأرض كخطوات ضباب)
+            dcam = w0 * Zc[t[0]] + w1 * Zc[t[1]] + w2 * Zc[t[2]]
+            # ضباب جوي: يبدأ أبكر ليصنع منظورًا هوائيًا للجبال البعيدة
+            k = 1.0 - np.exp(-np.maximum(0.0, dcam - 1100) * 0.00038)
+            if mode == "day":
+                # ضباب بارتفاعين: دافئ عند سطح الماء، بارد أزرق في العلو (منظور هوائي طبيعي)
+                hb = np.clip(wp[..., 2] / 210.0, 0.0, 1.0)[..., None]
+                warm = np.array([0.90, 0.83, 0.71], np.float32)
+                cool = np.array([0.55, 0.66, 0.82], np.float32)
+                fcol = warm[None, None, :] * (1 - hb) + cool[None, None, :] * hb
+            else:
+                fcol = np.array([0.035, 0.05, 0.10], np.float32)[None, None, :]
+            col = col * (1 - k[..., None]) + fcol * k[..., None]
             subimg = img[y0:y1 + 1, x0:x1 + 1]
             subimg[:] = np.where(vis[..., None], col, subimg)
             sub[:] = np.where(vis, z, sub)

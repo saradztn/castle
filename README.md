@@ -77,3 +77,30 @@ saradztn/castle
 | المواصفات التقنية MTA | ✅ مُنجزة |
 | الخامات | ⏳ ستولّدها وترفعها |
 | بناء الموديل | ⛔ لم يبدأ — بانتظار `textures/src/` + كلمة «تم الرفع» |
+
+---
+
+## 🏰 المشروع الآن (بعد الدمج والإصلاحات)
+
+| المسار | ما فيه |
+|---|---|
+| `tools/build_city.py` | مولّد المدينة: 11 مصطبة · 3 حلقات أسوار (84 قطعة) · قصر/كاتدرائية بسقف 44 م ونافذة وردة · مرفأ · جسر 8 عقود · شلالان · 6 كتل جبلية في الأفق — **41,225 وجه** |
+| `tools/render_preview.py` | مُصيّر المعاينة: ظل لكل بكسل · ضباب جوي لكل بكسل بطبقتين · لمعان بحر · وضع ليلي |
+| `tools/make_lod.py` | تقسيم إلى 6 أجزاء + تلاشي عنقودي → 4 مستويات LOD لكل جزء |
+| `tools/make_lamps.py` | استخراج **275 مصدر ضوء** من الهندسة → `mta/data/lamps.json` |
+| `tools/make_txd_sets.py` | مجموعات خامات بـ4 مقاسات استعدادًا لبناء TXD |
+| `mta/` | **مورد MTA:SA الكامل**: `meta.xml` · `config.lua` · 8 وحدات عميل + سيرفر · 6 شيدرات · 4 أصول PNG · بيانات |
+| `mta/client/pointlights.lua` + `mta/shaders/pointlight.fx` | **★ نظام الإضاءة القوي**: حتى **32 ضوءًا نقطيًا لكل بكسل** (بلا حدّ MTA) + هالات مرتعشة لكل الـ275 مصدرًا |
+| `renders/` | `preview_day.png` · `preview_night.png` · `compare_day_night.jpg` |
+| `docs/05_progress_report.md` | النسب لكل جزء من 100% |
+| `docs/06_visual_comparison_ar.md` | **المقارنة البصرية 11 نقطة** (المتوسط 86%) |
+| `docs/05_mta_install_ar.md` | دليل التركيب + تحويل OBJ→DFF والتخطيط للأداء |
+| `alternates/` | العمل الموازي محفوظًا كاملًا (مورد v1 + مولّد v1) بلا فقدان |
+
+### أوامر سريعة
+```bash
+python3 tools/build_city.py                    # بناء المدينة
+python3 tools/render_preview.py --in build/polys.json --out renders/preview_day.png \
+        --mode day --w 1600 --h 1000 --eye "600,-940,190" --target "20,-70,80"
+python3 tools/progress.py                      # لوحة النسب
+```

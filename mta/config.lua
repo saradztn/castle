@@ -17,6 +17,8 @@ CASTLE = {
     nightStart = 19,
     autoTick   = 30000,          -- كل 30 ثانية
     maxLights  = 7,              -- أقصى عدد أضواء حقيقية (createLight) في نفس اللحظة
+    shaderLights = 32,           -- ★ أضواء الشيدر النقطية لكل بكسل (pointlight.fx) — بلا حدّ MTA
+    glowRange  = 420,            -- مدى رسم هالات المصابيح (متر)
 
     -- ===== LOD =====
     lod = {

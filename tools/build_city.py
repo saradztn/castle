@@ -15,8 +15,8 @@ SEA = 0.0
 PEAK = 112.0
 
 MAT = {
-    "rock":       ("rock_cliff_strata",        8.0, (0.40, 0.39, 0.37)),
-    "rock_wet":   ("stone_seaweathered_mossy", 6.0, (0.30, 0.32, 0.31)),
+    "rock":       ("rock_cliff_strata",        8.0, (0.34, 0.35, 0.355)),
+    "rock_wet":   ("stone_seaweathered_mossy", 6.0, (0.22, 0.245, 0.25)),
     "grass":      ("terrain_grass",            8.0, (0.30, 0.40, 0.21)),
     "granite":    ("stone_granite_wall",       4.0, (0.44, 0.44, 0.45)),
     "sandstone":  ("stone_sandstone_ashlar",   4.0, (0.80, 0.69, 0.52)),
@@ -26,7 +26,7 @@ MAT = {
     "wood":       ("wood_oak_timber",          2.0, (0.44, 0.32, 0.21)),
     "cobble":     ("stone_cobble_street",      4.0, (0.44, 0.42, 0.39)),
     "quay":       ("stone_quay_granite",       4.0, (0.52, 0.51, 0.48)),
-    "water":      ("water_ocean",              8.0, (0.13, 0.34, 0.40)),
+    "water":      ("water_ocean",              8.0, (0.085, 0.295, 0.415)),
     "foam":       ("water_foam_shore",         4.0, (0.95, 0.96, 0.97)),
     "copper":     ("metal_copper_verdigris",   2.0, (0.32, 0.52, 0.43)),
     "gilded":     ("metal_gilded_bronze",      1.0, (0.85, 0.68, 0.30)),
@@ -38,6 +38,10 @@ MAT = {
     "iron":       ("metal_iron_forged",        2.0, (0.16, 0.16, 0.17)),
     "tapestry":   ("fabric_tapestry",          3.0, (0.55, 0.42, 0.30)),
     "leather":    ("leather_hide",             2.0, (0.38, 0.26, 0.16)),
+    "rose":       ("glass_stained_rose",       1.0, (0.78, 0.72, 0.62)),
+    # جبال الأفق البعيد (في الصورة المرجعية: قمم ثلجية عبر الضباب)
+    "mountain":   ("rock_cliff_strata",       26.0, (0.20, 0.24, 0.335)),
+    "snow":       ("plaster_lime_town",       22.0, (0.70, 0.77, 0.88)),
 }
 
 # ====================== خريطة المصاطب (قياسات من الصورة المرجعية) ======================
@@ -49,7 +53,7 @@ TERRACES = [
     (70.0,  (62.0, -40.0),     (182.0, 150.0),  "cobble"),   # المدينة العليا
     (56.0,  (58.0, -50.0),     (208.0, 172.0),  "cobble"),   # المدينة الوسطى
     (42.0,  (46.0, -52.0),     (234.0, 196.0),  "cobble"),   # المدينة السفلى
-    (30.0,  (30.0, -46.0),     (252.0, 214.0),  "dirt"),
+    (30.0,  (30.0, -46.0),     (252.0, 214.0),  "rock"),
     (22.0,  (20.0, -38.0),     (262.0, 224.0),  "rock"),
     (12.0,  (6.0, -20.0),      (272.0, 234.0),  "rock"),
     (-2.0,  (-10.0, -2.0),     (286.0, 248.0),  "rock_wet"),
@@ -58,6 +62,43 @@ TERRACES = [
 WALL_RINGS = [(22.0, 15.0, 4.0), (44.0, 13.0, 3.4), (70.0, 11.0, 2.8)]
 CAUSEWAY = dict(len=176.0, arches=8, deck_w=9.5, deck_z=15.0)
 WATERFALLS = [(206.0, 62.0, 11.0, 72.0), (224.0, 38.0, 8.0, 47.0)]   # (زاوية°, ارتفاع, عرض, منسوب أعلى)
+
+
+def build_mountains(mesh):
+    """جبال الأفق البعيد — كتل صخرية متعدّدة القمم بقمم ثلجية عبر الضباب."""
+    rnd = random.Random(SEED + 7)
+    for cl in range(6):                                  # 6 كتل جبلية على الأفق
+        a0 = math.tau * cl / 6 + rnd.uniform(-0.25, 0.25)
+        if 1.75 < a0 < 2.62:            # لا نضع الجبال خلف القلعة مباشرة (اتجاه الكاميرا)
+            a0 += 0.55
+        R0 = rnd.uniform(3200.0, 4600.0)
+        for _ in range(rnd.randint(3, 5)):               # 3–5 قمم متداخلة لكل كتلة
+            a = a0 + rnd.uniform(-0.20, 0.20)
+            R = R0 + rnd.uniform(-380.0, 380.0)
+            cx, cy = math.cos(a) * R, math.sin(a) * R * 0.92
+            h = rnd.uniform(190.0, 430.0)
+            base = rnd.uniform(220.0, 470.0)
+            seg = 11
+            r0, r1 = [], []
+            for j in range(seg):
+                aa = math.tau * j / seg
+                rr0 = base * rnd.uniform(0.70, 1.34)                     # قاعدة وعرة
+                rr1 = base * (1.0 - 0.44) * rnd.uniform(0.60, 1.18)      # منتصف غير منتظم
+                jx, jy = rnd.uniform(-0.14, 0.14) * base, rnd.uniform(-0.14, 0.14) * base
+                r0.append((cx + math.cos(aa) * rr0, cy + math.sin(aa) * rr0, 0.0))
+                r1.append((cx + math.cos(aa) * rr1 + jx, cy + math.sin(aa) * rr1 + jy,
+                           h * rnd.uniform(0.38, 0.54)))
+            apex = (cx + rnd.uniform(-0.08, 0.08) * base, cy + rnd.uniform(-0.08, 0.08) * base, h)
+            v = r0 + r1 + [apex]
+            f = [[j, (j + 1) % seg, seg + (j + 1) % seg, seg + j] for j in range(seg)]
+            f += [[seg + j, seg + (j + 1) % seg, 2 * seg] for j in range(seg)]
+            mesh.add(v, f, "mountain")
+            zs = h * 0.66                                            # ثلج فوق 66% من الارتفاع
+            rs = base * (1.0 - 0.44) * (1.0 - zs / h) * 1.08
+            pts2 = [(apex[0] + math.cos(math.tau * j / seg) * rs * rnd.uniform(0.82, 1.18),
+                     apex[1] + math.sin(math.tau * j / seg) * rs * rnd.uniform(0.82, 1.18)) for j in range(seg)]
+            v2 = [(q[0], q[1], zs) for q in pts2] + [apex]
+            mesh.add(v2, [[j, (j + 1) % seg, seg] for j in range(seg)], "snow")
 
 
 def vnoise_scalar(x, y):
@@ -333,15 +374,33 @@ def build(out_dir):
     print("  · القصر والكاتدرائية على القمة…")
     zt = TERRACES[0][0]
     add_box(mesh, -64, -42, zt - 8, 64, 42, zt + 32, "sandstone")            # الكتلة الرئيسية
-    add_gable(mesh, -64, -42, 64, 42, zt + 32, 32.0, "slate", oh=1.8)
+    add_gable(mesh, -64, -42, 64, 42, zt + 32, 44.0, "slate", oh=1.8)       # سقف حادّ كالمرجع
+    add_box(mesh, -64, -1.6, zt + 74.4, 64, 1.6, zt + 76.4, "gilded")       # حِراف قمّي مذهّب
+    for lx in range(-56, 57, 8):                                            # نوافذ سقفية
+        add_box(mesh, lx - 1.6, -27.0, zt + 44.0, lx + 1.6, -24.0, zt + 50.5, "window")
     add_box(mesh, -36, -28, zt + 32, 36, 28, zt + 48, "sandstone")           # صحن الكاتدرائية
     add_gable(mesh, -36, -28, 36, 28, zt + 48, 17.0, "slate", oh=1.3)
     add_windows(mesh, -58, -42.4, 58, -42.0, zt + 4, zt + 30, cols=7, rows=2, lit=0.3)
+    # نافذة وردة دائرة + إطار حجري (على الواجهة الجنوبية)
+    rc, rr, seg_r = (0.0, -42.6, zt + 20.0), 7.2, 20
+    mesh.add([(rc[0] + math.cos(math.tau * k / seg_r) * rr, rc[1], rc[2] + math.sin(math.tau * k / seg_r) * rr) for k in range(seg_r)],
+             [list(range(seg_r))], "rose")
+    mesh.add([(rc[0] + math.cos(math.tau * k / seg_r) * rr * 1.16, rc[1] - 0.35, rc[2] + math.sin(math.tau * k / seg_r) * rr * 1.16) for k in range(seg_r)]
+             + [(rc[0] + math.cos(math.tau * k / seg_r) * rr * 0.96, rc[1] - 0.35, rc[2] + math.sin(math.tau * k / seg_r) * rr * 0.96) for k in range(seg_r)],
+             [[k, (k + 1) % seg_r, seg_r + (k + 1) % seg_r, seg_r + k] for k in range(seg_r)], "sandstone")
+    # قِمم صغيرة على خط القمّة (pinnacles)
+    for px_ in range(-52, 53, 13):
+        for sy in (-1, 1):
+            add_cyl(mesh, px_, sy * 26.0, 1.5, zt + 46.0, zt + 62.0, "sandstone", seg=6)
+            add_cone(mesh, px_, sy * 26.0, 2.2, zt + 62.0, zt + 70.0, "slate", seg=6)
     for sx in (-1, 1):                                                       # برجان غربيان مستديران
         add_cyl(mesh, sx * 70, -6, 8.5, zt - 10, zt + 56, "sandstone", seg=16)
         add_machicolation(mesh, sx * 70, -6, 8.5, zt + 54, mat="sandstone")
         add_cone(mesh, sx * 70, -6, 10.5, zt + 58, zt + 80, "slate", seg=16)
         add_cyl(mesh, sx * 70, -6, 0.45, zt + 80, zt + 86, "gilded", seg=6)
+    for sy in (-1, 1):                                                       # جناحان عرضيان
+        add_box(mesh, -14, sy * 30 - 12, zt + 12, 14, sy * 30 + 12, zt + 40, "sandstone")
+        add_gable(mesh, -14, sy * 30 - 12, 14, sy * 30 + 12, zt + 40, 20.0, "slate", oh=1.0)
     add_box(mesh, -16, -16, zt + 30, 16, 16, zt + 88, "sandstone")           # البرج المركزي
     add_windows(mesh, -15, -16.4, 15, -16.0, zt + 40, zt + 80, cols=3, rows=3, lit=0.25)
     add_cone(mesh, 0, 0, 17.5, zt + 88, zt + 126, "slate", seg=18)
@@ -356,8 +415,12 @@ def build(out_dir):
         for sy in (-1, 1):
             mesh.add([(x, sy * 42, zt + 12), (x + 4.2, sy * 42, zt + 12),
                       (x + 4.2, sy * 54, zt + 28), (x, sy * 54, zt + 28)], [[0, 1, 2, 3]], "sandstone")
-    for (x, y) in [(-54, 36), (54, 36), (-70, -6), (70, -6)]:                # رايات
-        mesh.add([(x, y, zt + 56), (x + 7.5, y, zt + 56), (x + 7.5, y, zt + 34), (x, y, zt + 34)],
+    # رايات معلّقة على البرجين الغربيين فقط (سارية + قماش) — بلا قطع طائر
+    for sx in (-1, 1):
+        x0 = sx * 70.0
+        add_cyl(mesh, x0, -6.0, 0.35, zt + 86, zt + 104, "wood", seg=5)      # سارية
+        mesh.add([(x0, -6.0, zt + 102), (x0 + sx * 8.5, -6.0, zt + 102),
+                  (x0 + sx * 8.5, -6.0, zt + 86), (x0, -6.0, zt + 86)],
                  [[0, 1, 2, 3]], "banner")
     add_box(mesh, -22, -14, zt + 0.2, 22, -2, zt + 1.2, "marble")            # ساحة القصر
 
@@ -365,10 +428,10 @@ def build(out_dir):
     print("  · الحدائق الملكية…")
     zg, (cgx, cgy), _, _ = TERRACES[1]
     add_cyl(mesh, cgx + 30, cgy + 26, 7.0, zg, zg + 1.8, "marble", seg=16)
-    for k in range(40):                                                      # أشجار
-        a = math.tau * k / 40
+    for k in range(62):                                                      # أشجار الحدائق
+        a = math.tau * k / 62
         add_cyl(mesh, cgx + math.cos(a) * 52, cgy + math.sin(a) * 40, 0.7, zg, zg + 5.0, "wood", seg=6)
-        add_cone(mesh, cgx + math.cos(a) * 52, cgy + math.sin(a) * 40, 4.2, zg + 4.0, zg + 12.0, "grass", seg=8)
+        add_cone(mesh, cgx + math.cos(a) * 52, cgy + math.sin(a) * 40, 4.2, zg + 4.0, zg + 13.5, "grass", seg=8)
     for k in range(18):                                                      # أشجار المدينة
         i = 3 + (k % 3)
         z, (cx0, cy0), (rx, ry), _ = TERRACES[i]
@@ -473,6 +536,9 @@ def build(out_dir):
             add_box(mesh, x0, y0, -18, x0 + step, y0 + step, 0.0, "water")
 
     # ===== نتوءات الجرف الرأسية (أسنان صخرية على الوجه الخارجي) =====
+    print("  · جبال الأفق البعيد (قمم ثلجية)…")
+    build_mountains(mesh)
+
     print("  · أسنان الجرف…")
     for i in range(2, 8):
         t = TERRACES[i]
