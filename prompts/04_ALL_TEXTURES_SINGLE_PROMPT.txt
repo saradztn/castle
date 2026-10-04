@@ -1,0 +1,109 @@
+================================================================================
+  ★ البرومبت الواحد الشامل — كل الخامات في صورة واحدة (Texture Atlas)
+  مشروع: Castle & Palace — مدينة القلعة الساحلية (MTA:SA)
+
+  لماذا؟ لأن كثيرًا من مولّدات الصور تُنتج صورة واحدة لكل برومبت ولا تُعطيك
+  "عدة صور". الحل: برومبت واحد يُنتج *لوحة أطلس* واحدة مكوّنة من 24 خانة
+  (6 أعمدة × 4 صفوف)، وكل خانة خامة كاملة. ثم يقصّها سكربت جاهز عندي إلى
+  24 ملف PNG منفصلة تلقائيًا.
+
+  الاستخدام:
+  1) انسخ "البرومبت الرئيسي" بالكامل (بين --- ) والصقه في الخانة Prompt.
+  2) انسخ "البرومبت السلبي" والصقه في الخانة Negative.
+  3) اطلب أكبر دقة ممكنة (يفضّل 4096×4096 أو 4096×2731 مع الحفاظ على الشبكة).
+  4) ضع الصورة الناتجة في المستودع داخل:  textures/atlas/atlas.png
+  5) قل لي "تم الرفع" — سأشغّل السكربت وأقصّها إلى 24 خامة مسماة، ثم أولّد
+     الـNormal/Roughness/AO لكل واحدة وأربطها على UVs النموذج.
+
+  ★ ملاحظات مهمة
+  • هذه الصورة تُعطي خامة الألوان (Albedo). الخرائط الأخرى (Normal/Roughness/AO)
+    أستخرجها أنا برمجيًا من نفس الصورة بدقة عالية، فلا تحتاج لتوليدها.
+  • لا تكتب أي نص أو أرقام على الصورة — الشبكة والتوزيع يكفيان، والخانات
+    معروفة الترتيب من الجدول أدناه (صفًّا صفًّا من أعلى‑يسار).
+  • إن كان المولّد يفشل مع 24 خانة، استخدم النسخة البديلة 4×4 (16 خانة) في
+    القسم الأخير من هذا الملف — نفس الأسلوب.
+
+
+================================================================================
+  [1] البرومبت الرئيسي — أطلس 24 خامة (6 × 4)
+================================================================================
+
+---
+A single high-resolution texture atlas sheet: a perfectly regular grid of 24 square material swatch cells arranged in 6 columns and 4 rows, separated by thin 8-pixel neutral mid-grey gutters, no labels, no numbers, no text, no watermarks and no frames other than the gutters. Every cell is a flat, orthographic, shadowless sample of one material that tiles seamlessly on all four edges, lit by perfectly even neutral white light with no directional shading, no highlights, no vignette, no reflections and no depth of field; macro-sharp detail, photorealistic scanned-material quality, sRGB.
+
+Row 1, left to right: 1) warm sandstone ashlar masonry, hand-cut rectangular blocks about 60 by 30 cm in regular courses, tight recessed joints, warm honey-grey, fine chisel marks, mild water staining, a little moss in the joints; 2) course grey granite curtain-wall masonry, blocks about 55 by 28 cm, wide lime-mortar joints, cool grey with darker mineral speckling, chipped edges; 3) sea-weathered mossy stone, darker grey-brown, salt bloom, dried seaweed traces, heavy moss and lichen in the joints; 4) lime-washed town plaster, warm off-white, subtle trowel undulation, hairline cracks, patches flaking to reveal stone; 5) harbour quay granite paving, heavy grey slabs about 80 by 60 cm in rows, sand and grit in the joints, algae, dried salt, rust marks from iron mooring rings; 6) medieval street cobblestone paving, rounded stones 8 to 18 cm in packed sand, grey and brown tones, worn shiny walking lines.
+
+Row 2, left to right: 7) dark blue-grey slate roofing in overlapping graduated courses, slates about 30 by 20 cm, chipped edges, moss and lichen near the overlaps; 8) weathered terracotta barrel roof tiles in overlapping courses, orange-brown with lichen patches and thin mortar lines; 9) weathered oak roof shingles, small overlapping rectangles about 25 by 15 cm, silvered grey-brown, split and curled edges, moss in the damp spots; 10) structural oak timber, adze-hewn surface, warm brown with strong straight grain, knots and old peg holes; 11) vertical oak door planks, seven to eight planks about 25 cm wide, aged dark oak, pronounced vertical grain, nail holes; 12) stratified sea cliff rock face, horizontal beds of grey limestone, deep fractures and fissures, dark wet areas, lichen spots, no vegetation.
+
+Row 3, left to right: 13) temperate maritime meadow grass viewed from directly above, short dense blades in mixed greens, clover and moss clumps, small stones and bare earth spots; 14) open sea surface viewed from directly above, deep teal-green water with fine wind chop, long swells and subtle whitecap streaks, no horizon; 15) polished pale marble floor tiles, cream-white with soft grey-ochre veining, large square slabs with fine joints; 16) worn medieval limestone floor slabs, large irregular flags, pale grey-beige with darker traffic wear and dust in the joints; 17) old oak plank floorboards, boards about 22 cm wide, honey-brown with darker grain lines and iron nail heads; 18) carved dark walnut wall panelling with shallow recessed Gothic linenfold panels and a waxed satin finish.
+
+Row 4, left to right: 19) deep crimson royal damask fabric, subtle tone-on-tone woven damask pattern of stylised Gothic foliage, wool-silk sheen, gentle folds; 20) hand-woven wool carpet, deep red ground with geometric border bands in indigo, gold and cream, coarse visible weave, no text and no figures; 21) aged brown leather with visible grain, fine cracks and worn lighter edges; 22) blackened hand-forged wrought iron, near-black with hammer marks, scale, pitting and light surface rust in the recesses; 23) gilded bronze ornament surface, warm antique gold over bronze with dark patina in the recesses and worn edges; 24) oxidized copper sheet with verdigris patina, green blending into teal and dark brown, streaked run-off staining.
+
+Overall: temperate maritime climate, consistent weathered look across the whole sheet, matte surfaces, no fresh damage, no mud, no tropical elements, no props, no objects, no shadows. Every cell must be perfectly square, perfectly aligned to the grid, and full-bleed to its own cell edges.
+---
+
+  البرومبت السلبي (Negative):
+---
+baked shadows, directional lighting, specular highlights, vignette, border, frame, text, numbers, labels, watermark, logo, signature, perspective, depth of field, blur, noise, visible tiling repetition, objects, props, hands, people, plants in the stone cells, cartoon, painting, illustration, oversaturated, HDR glow, lens flare, non-seamless edges, split cells, misaligned grid
+---
+
+
+================================================================================
+  [2] ترتيب الخانات (لا تكتبه على الصورة — هذا مرجعي أنا)
+================================================================================
+
+  الصف 1:  stone_sandstone_ashlar | stone_granite_wall | stone_seaweathered_mossy |
+           plaster_lime_town | stone_quay_granite | stone_cobble_street
+  الصف 2:  roof_slate | roof_tile_terracotta | roof_shingle_wood |
+           wood_oak_timber | wood_oak_door | rock_cliff_strata
+  الصف 3:  terrain_grass | water_ocean | marble_floor_light |
+           stone_flagstone_floor | wood_plank_floor | wood_walnut_panel
+  الصف 4:  fabric_damask_red | fabric_carpet_woven | leather_hide |
+           metal_iron_forged | metal_gilded_bronze | metal_copper_verdigris
+
+
+================================================================================
+  [3] نسخة بديلة — أطلس 16 خامة (4 × 4) إذا فشل المولّد مع 24 خانة
+================================================================================
+
+---
+A single texture atlas sheet: a perfectly regular grid of 16 square material swatch cells arranged in 4 columns and 4 rows, separated by thin neutral mid-grey gutters, no labels, no numbers, no text, no watermark. Every cell is a flat orthographic shadowless sample of one material, tileable seamlessly on all four edges, lit by perfectly even neutral white light, no directional shading, no highlights, no vignette, no depth of field, macro-sharp photorealistic scanned-material detail, sRGB.
+
+Row 1: 1) warm sandstone ashlar masonry with 60 by 30 cm blocks and tight recessed joints, mild staining and a little moss; 2) course grey granite masonry with wide lime-mortar joints and chipped edges; 3) sea-weathered mossy stone with salt bloom, dried seaweed traces and heavy lichen; 4) lime-washed town plaster, warm off-white with hairline cracks and flaking patches revealing stone.
+Row 2: 5) medieval street cobblestone paving, rounded stones in packed sand, worn shiny walking lines; 6) harbour quay granite paving, heavy grey slabs, algae, dried salt and rust marks; 7) dark blue-grey slate roofing in overlapping graduated courses with moss near the overlaps; 8) weathered terracotta barrel roof tiles with lichen patches.
+Row 3: 9) structural oak timber, adze-hewn with strong grain, knots and peg holes; 10) vertical oak door planks, aged dark oak with pronounced vertical grain and nail holes; 11) stratified sea cliff rock face, horizontal limestone beds with fractures and lichen, no vegetation; 12) temperate meadow grass from directly above, dense short blades in mixed greens with small stones.
+Row 4: 13) open sea surface from directly above, deep teal-green with fine wind chop and subtle whitecaps, no horizon; 14) polished pale marble floor tiles, cream-white with grey-ochre veining; 15) blackened hand-forged wrought iron with hammer marks, scale and light surface rust; 16) hand-woven wool carpet, deep red ground with geometric indigo, gold and cream borders, no text and no figures.
+
+Temperate maritime climate, consistent weathered look, matte surfaces, no props, no objects, no shadows, every cell perfectly square and full-bleed.
+---
+
+  الترتيب:
+  الصف 1: stone_sandstone_ashlar | stone_granite_wall | stone_seaweathered_mossy | plaster_lime_town
+  الصف 2: stone_cobble_street | stone_quay_granite | roof_slate | roof_tile_terracotta
+  الصف 3: wood_oak_timber | wood_oak_door | rock_cliff_strata | terrain_grass
+  الصف 4: water_ocean | marble_floor_light | metal_iron_forged | fabric_carpet_woven
+
+
+================================================================================
+  [4] نسخة مصغّرة — 6 خامات فقط (2 × 3) للمولّدات الضعيفة جدًا
+================================================================================
+
+---
+A single texture atlas sheet with 6 square material swatch cells in 2 columns and 3 rows separated by thin neutral grey gutters, no text and no labels. Cell 1 warm sandstone ashlar masonry with 60 by 30 cm blocks; cell 2 course grey granite masonry; cell 3 dark blue-grey slate roofing in overlapping courses; cell 4 structural oak timber with strong grain and peg holes; cell 5 medieval cobblestone street paving; cell 6 stratified sea cliff rock with fractures and lichen. Every cell flat, orthographic, shadowless, evenly lit, seamlessly tileable, macro-sharp photorealistic, sRGB.
+---
+  الترتيب: stone_sandstone_ashlar | stone_granite_wall | roof_slate | wood_oak_timber | stone_cobble_street | rock_cliff_strata
+
+
+================================================================================
+  [5] بعد الرفع — ماذا سأفعل آليًا
+================================================================================
+  1) قصّ الأطلس إلى <id>_albedo.png بالأسماء أعلاه (سكربت tools/slice_atlas.py).
+  2) استخراج <id>_normal.png (Normal من الارتفاع بالـSobel) بدقة وفلاتر تنظيف.
+  3) استخراج <id>_roughness.png (من السطوع + تباين محلي) و<id>_ao.png (من الفتحات).
+  4) تصحيح الحواف للوصول إلى Seamless 100% (blend متقاطع عند الحدود).
+  5) تنزيل المقاسات لـ2048/1024/512/256 حسب LOD وبناء TXD بضغط DXT1/DXT5.
+  6) الربط على UVs النموذج + إضافة decals (طحالب/ملح/تسربات/سخام).
+
+  ⚠️ إن كانت الصورة الناتجة غير منتظمة الشبكة (خانات غير متساوية)، أرسلها كما هي
+  وسأضبط القصّ يدويًا — لا مشكلة.
+================================================================================

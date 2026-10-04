@@ -10,64 +10,303 @@
     "textures_path": "textures/src/",
     "filename_pattern": "<id>_<map>.png",
     "maps": {
-      "albedo": { "colorspace": "sRGB", "baked_lighting": false, "baked_ao": false },
-      "normal": { "colorspace": "Linear", "convention": "OpenGL +Y up" },
-      "roughness": { "colorspace": "Linear" },
-      "ao": { "colorspace": "Linear" },
-      "height": { "colorspace": "Linear", "optional": true },
-      "alpha": { "usage": "cutouts, decals, glass" }
+      "albedo": {
+        "colorspace": "sRGB",
+        "baked_lighting": false,
+        "baked_ao": false
+      },
+      "normal": {
+        "colorspace": "Linear",
+        "convention": "OpenGL +Y up"
+      },
+      "roughness": {
+        "colorspace": "Linear"
+      },
+      "ao": {
+        "colorspace": "Linear"
+      },
+      "height": {
+        "colorspace": "Linear",
+        "optional": true
+      },
+      "alpha": {
+        "usage": "cutouts, decals, glass"
+      }
     },
-    "lod_texture_sizes_px": { "high": 2048, "medium": 1024, "low": 512, "distant": 256 }
+    "lod_texture_sizes_px": {
+      "high": 2048,
+      "medium": 1024,
+      "low": 512,
+      "distant": 256
+    }
   },
   "zones": {
-    "1": { "id": "palace_cathedral", "ar": "القصر والكاتدرائية", "x": "summit" },
-    "2": { "id": "upper_courtyard", "ar": "الساحة الداخلية والنافورة" },
-    "3": { "id": "main_gatehouse", "ar": "البوابة الرئيسية" },
-    "4": { "id": "lower_market", "ar": "سوق المدينة السفلى" },
-    "5": { "id": "town_church", "ar": "كنيسة المدينة" },
-    "6": { "id": "great_library", "ar": "المكتبة الكبرى" },
-    "7": { "id": "dungeons", "ar": "السجون" },
-    "8": { "id": "vaults", "ar": "الأقبية" },
-    "9": { "id": "royal_gardens", "ar": "الحدائق الملكية" },
-    "10": { "id": "harbour", "ar": "المرفأ" },
-    "11": { "id": "causeway_bridge", "ar": "الجسر السباعي" },
-    "12": { "id": "towers_battlements", "ar": "الأبراج والمتاريس" },
-    "13": { "id": "armoury", "ar": "غرفة الأسلحة" },
-    "14": { "id": "great_hall", "ar": "قاعة الطعام الكبرى" },
-    "15": { "id": "secret_passages", "ar": "الممرات السرية" },
-    "16": { "id": "kitchens", "ar": "المطابخ" }
+    "1": {
+      "id": "palace_cathedral",
+      "ar": "القصر والكاتدرائية",
+      "x": "summit"
+    },
+    "2": {
+      "id": "upper_courtyard",
+      "ar": "الساحة الداخلية والنافورة"
+    },
+    "3": {
+      "id": "main_gatehouse",
+      "ar": "البوابة الرئيسية"
+    },
+    "4": {
+      "id": "lower_market",
+      "ar": "سوق المدينة السفلى"
+    },
+    "5": {
+      "id": "town_church",
+      "ar": "كنيسة المدينة"
+    },
+    "6": {
+      "id": "great_library",
+      "ar": "المكتبة الكبرى"
+    },
+    "7": {
+      "id": "dungeons",
+      "ar": "السجون"
+    },
+    "8": {
+      "id": "vaults",
+      "ar": "الأقبية"
+    },
+    "9": {
+      "id": "royal_gardens",
+      "ar": "الحدائق الملكية"
+    },
+    "10": {
+      "id": "harbour",
+      "ar": "المرفأ"
+    },
+    "11": {
+      "id": "causeway_bridge",
+      "ar": "الجسر السباعي"
+    },
+    "12": {
+      "id": "towers_battlements",
+      "ar": "الأبراج والمتاريس"
+    },
+    "13": {
+      "id": "armoury",
+      "ar": "غرفة الأسلحة"
+    },
+    "14": {
+      "id": "great_hall",
+      "ar": "قاعة الطعام الكبرى"
+    },
+    "15": {
+      "id": "secret_passages",
+      "ar": "الممرات السرية"
+    },
+    "16": {
+      "id": "kitchens",
+      "ar": "المطابخ"
+    }
   },
   "dimensions_m": {
-    "promontory": { "ns": 520, "ew": 400, "summit_height_above_sea": 110 },
-    "cliff": { "slope_deg": [60, 80], "height_range": [30, 70] },
-    "sea_depth": [6, 14],
-    "palace_block": [110, 80],
-    "great_spire": { "base_diameter": 16, "height_above_plateau": 95, "total_above_sea": 205 },
-    "secondary_spires": { "count": 6, "diameter": [7, 9], "height": [38, 60], "roof_pitch_deg": 55 },
-    "round_towers_palace": { "count": 2, "diameter": 14, "height": 46 },
-    "flying_buttresses": { "count": 10, "span": 6 },
-    "ceremonial_ramp": { "width": 9, "slope_deg": 22 },
-    "wall_rings": {
-      "upper": { "circuit": [180, 130], "thickness": 3.0, "height": 12, "parapet": 1.6 },
-      "middle": { "circuit": [250, 190], "thickness": 3.6, "height": 14, "parapet": 1.6 },
-      "lower": { "circuit": [330, 250], "thickness": 4.2, "height": 16, "parapet": 1.8 }
+    "promontory": {
+      "ns": 520,
+      "ew": 400,
+      "summit_height_above_sea": 110
     },
-    "round_towers_walls": { "diameter": [11, 16], "height": [22, 30] },
-    "main_gate": { "opening": [6, 9], "portcullises": 2 },
-    "sea_gate": { "opening": 8, "towers": { "diameter": 12 } },
-    "town": { "terraces": 6, "terrace_drop": [8, 14], "buildings": 320, "typical_building": [8, 7, 7], "roof_pitch_deg": 48, "alley_width": [2.6, 4.5], "bridges": 5, "church": { "nave": [26, 12], "bell_tower": 34 } },
-    "harbour": { "quay_frontage": 220, "quay_width": [8, 14], "warehouses": { "count": 8, "size": [14, 9] }, "pile_height": [6, 9] },
-    "causeway": { "length": 260, "spans": 14, "span": 16, "deck_width": 9 },
+    "cliff": {
+      "slope_deg": [
+        60,
+        80
+      ],
+      "height_range": [
+        30,
+        70
+      ]
+    },
+    "sea_depth": [
+      6,
+      14
+    ],
+    "palace_block": [
+      110,
+      80
+    ],
+    "great_spire": {
+      "base_diameter": 16,
+      "height_above_plateau": 95,
+      "total_above_sea": 205
+    },
+    "secondary_spires": {
+      "count": 6,
+      "diameter": [
+        7,
+        9
+      ],
+      "height": [
+        38,
+        60
+      ],
+      "roof_pitch_deg": 55
+    },
+    "round_towers_palace": {
+      "count": 2,
+      "diameter": 14,
+      "height": 46
+    },
+    "flying_buttresses": {
+      "count": 10,
+      "span": 6
+    },
+    "ceremonial_ramp": {
+      "width": 9,
+      "slope_deg": 22
+    },
+    "wall_rings": {
+      "upper": {
+        "circuit": [
+          180,
+          130
+        ],
+        "thickness": 3.0,
+        "height": 12,
+        "parapet": 1.6
+      },
+      "middle": {
+        "circuit": [
+          250,
+          190
+        ],
+        "thickness": 3.6,
+        "height": 14,
+        "parapet": 1.6
+      },
+      "lower": {
+        "circuit": [
+          330,
+          250
+        ],
+        "thickness": 4.2,
+        "height": 16,
+        "parapet": 1.8
+      }
+    },
+    "round_towers_walls": {
+      "diameter": [
+        11,
+        16
+      ],
+      "height": [
+        22,
+        30
+      ]
+    },
+    "main_gate": {
+      "opening": [
+        6,
+        9
+      ],
+      "portcullises": 2
+    },
+    "sea_gate": {
+      "opening": 8,
+      "towers": {
+        "diameter": 12
+      }
+    },
+    "town": {
+      "terraces": 6,
+      "terrace_drop": [
+        8,
+        14
+      ],
+      "buildings": 320,
+      "typical_building": [
+        8,
+        7,
+        7
+      ],
+      "roof_pitch_deg": 48,
+      "alley_width": [
+        2.6,
+        4.5
+      ],
+      "bridges": 5,
+      "church": {
+        "nave": [
+          26,
+          12
+        ],
+        "bell_tower": 34
+      }
+    },
+    "harbour": {
+      "quay_frontage": 220,
+      "quay_width": [
+        8,
+        14
+      ],
+      "warehouses": {
+        "count": 8,
+        "size": [
+          14,
+          9
+        ]
+      },
+      "pile_height": [
+        6,
+        9
+      ]
+    },
+    "causeway": {
+      "length": 170,
+      "arches": 8,
+      "arch_span": 16,
+      "deck_width": 9,
+      "cutwater_piers": true
+    },
     "lighthouse": 34,
     "waterfalls": [
-      { "height": 46, "width": [6, 11] },
-      { "height": 62, "width": [6, 11] },
-      { "height": 30, "width": [6, 11] }
+      {
+        "height": 60,
+        "width": [
+          6,
+          10
+        ]
+      },
+      {
+        "height": 35,
+        "width": [
+          6,
+          10
+        ]
+      }
     ],
     "culvert_channel_width": 2.2
   },
-  "lod_budgets_tris": { "high": 700000, "medium": 220000, "low": 70000, "distant": 12000 },
-  "lod_distances_m": { "high": [0, 120], "medium": [120, 350], "low": [350, 800], "distant": [800, 2500] },
+  "lod_budgets_tris": {
+    "high": 700000,
+    "medium": 220000,
+    "low": 70000,
+    "distant": 12000
+  },
+  "lod_distances_m": {
+    "high": [
+      0,
+      120
+    ],
+    "medium": [
+      120,
+      350
+    ],
+    "low": [
+      350,
+      800
+    ],
+    "distant": [
+      800,
+      2500
+    ]
+  },
   "models_split": {
     "palace_cathedral": 6,
     "upper_ring_and_courtyard": 4,
@@ -105,56 +344,459 @@
     "earth": "#A89677"
   },
   "textures": [
-    { "id": "stone_sandstone_ashlar", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao","height"] },
-    { "id": "stone_granite_wall", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao","height"] },
-    { "id": "stone_seaweathered_mossy", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "plaster_lime_town", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "stone_quay_granite", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao","height"] },
-    { "id": "stone_cobble_street", "tier": 1, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao","height"] },
-    { "id": "roof_slate", "tier": 1, "tile_m": 3.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "roof_tile_terracotta", "tier": 1, "tile_m": 3.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "roof_shingle_wood", "tier": 1, "tile_m": 3.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "wood_oak_timber", "tier": 1, "tile_m": 2.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "wood_oak_door", "tier": 1, "tile_m": 2.0, "maps": ["albedo","normal","roughness","ao"], "notes": "vertical grain" },
-    { "id": "rock_cliff_strata", "tier": 1, "tile_m": 8.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "terrain_grass", "tier": 1, "tile_m": 8.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "water_ocean", "tier": 1, "tile_m": 8.0, "maps": ["albedo","normal","roughness","height"] },
-    { "id": "water_foam_shore", "tier": 1, "tile_m": 4.0, "maps": ["albedo_alpha","normal"] },
-
-    { "id": "marble_floor_light", "tier": 2, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "stone_flagstone_floor", "tier": 2, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "wood_plank_floor", "tier": 2, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "wood_walnut_panel", "tier": 2, "tile_m": 2.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "fabric_damask_red", "tier": 2, "tile_m": 2.0, "maps": ["albedo","normal","roughness"] },
-    { "id": "fabric_carpet_woven", "tier": 2, "tile_m": 4.0, "maps": ["albedo","normal","roughness"] },
-    { "id": "leather_hide", "tier": 2, "tile_m": 2.0, "maps": ["albedo","normal","roughness"] },
-    { "id": "metal_iron_forged", "tier": 2, "tile_m": 2.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "metal_gilded_bronze", "tier": 2, "tile_m": 1.0, "maps": ["albedo","normal","roughness","metalness"] },
-    { "id": "metal_copper_verdigris", "tier": 2, "tile_m": 2.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "glass_leaded_pane", "tier": 2, "tile_m": 1.0, "maps": ["albedo_alpha","normal","roughness"], "variants": ["glass_leaded_pane_emissive_albedo"] },
-    { "id": "glass_stained_rose", "tier": 2, "non_tiling": true, "maps": ["albedo_alpha","normal","roughness"] },
-    { "id": "fabric_banner_heraldry", "tier": 2, "non_tiling": true, "maps": ["albedo_alpha","normal","roughness"], "double_sided": true },
-    { "id": "terrain_dirt_road", "tier": 2, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] },
-    { "id": "foliage_leaves", "tier": 2, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha","normal"] },
-
-    { "id": "decal_moss_patch", "tier": 3, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha","normal"] },
-    { "id": "decal_salt_bloom", "tier": 3, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha","normal"] },
-    { "id": "decal_water_streak", "tier": 3, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha","normal"] },
-    { "id": "decal_soot_grime", "tier": 3, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha"] },
-    { "id": "decal_stone_crack", "tier": 3, "tile_m": 2.0, "decal_alpha": true, "maps": ["albedo_alpha","normal"] },
-    { "id": "metal_iron_grille", "tier": 3, "tile_m": 1.0, "decal_alpha": true, "maps": ["albedo_alpha"] },
-    { "id": "fabric_tapestry", "tier": 3, "non_tiling": true, "maps": ["albedo_alpha","normal","roughness"] },
-    { "id": "wood_props_kit", "tier": 3, "tile_m": 4.0, "maps": ["albedo","normal","roughness","ao"] }
+    {
+      "id": "stone_sandstone_ashlar",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height"
+      ]
+    },
+    {
+      "id": "stone_granite_wall",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height"
+      ]
+    },
+    {
+      "id": "stone_seaweathered_mossy",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "plaster_lime_town",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "stone_quay_granite",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height"
+      ]
+    },
+    {
+      "id": "stone_cobble_street",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height"
+      ]
+    },
+    {
+      "id": "roof_slate",
+      "tier": 1,
+      "tile_m": 3.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "roof_tile_terracotta",
+      "tier": 1,
+      "tile_m": 3.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "roof_shingle_wood",
+      "tier": 1,
+      "tile_m": 3.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "wood_oak_timber",
+      "tier": 1,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "wood_oak_door",
+      "tier": 1,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ],
+      "notes": "vertical grain"
+    },
+    {
+      "id": "rock_cliff_strata",
+      "tier": 1,
+      "tile_m": 8.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "terrain_grass",
+      "tier": 1,
+      "tile_m": 8.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "water_ocean",
+      "tier": 1,
+      "tile_m": 8.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "height"
+      ]
+    },
+    {
+      "id": "water_foam_shore",
+      "tier": 1,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "marble_floor_light",
+      "tier": 2,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "stone_flagstone_floor",
+      "tier": 2,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "wood_plank_floor",
+      "tier": 2,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "wood_walnut_panel",
+      "tier": 2,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "fabric_damask_red",
+      "tier": 2,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness"
+      ]
+    },
+    {
+      "id": "fabric_carpet_woven",
+      "tier": 2,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness"
+      ]
+    },
+    {
+      "id": "leather_hide",
+      "tier": 2,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness"
+      ]
+    },
+    {
+      "id": "metal_iron_forged",
+      "tier": 2,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "metal_gilded_bronze",
+      "tier": 2,
+      "tile_m": 1.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "metalness"
+      ]
+    },
+    {
+      "id": "metal_copper_verdigris",
+      "tier": 2,
+      "tile_m": 2.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "glass_leaded_pane",
+      "tier": 2,
+      "tile_m": 1.0,
+      "maps": [
+        "albedo_alpha",
+        "normal",
+        "roughness"
+      ],
+      "variants": [
+        "glass_leaded_pane_emissive_albedo"
+      ]
+    },
+    {
+      "id": "glass_stained_rose",
+      "tier": 2,
+      "non_tiling": true,
+      "maps": [
+        "albedo_alpha",
+        "normal",
+        "roughness"
+      ]
+    },
+    {
+      "id": "fabric_banner_heraldry",
+      "tier": 2,
+      "non_tiling": true,
+      "maps": [
+        "albedo_alpha",
+        "normal",
+        "roughness"
+      ],
+      "double_sided": true
+    },
+    {
+      "id": "terrain_dirt_road",
+      "tier": 2,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    },
+    {
+      "id": "foliage_leaves",
+      "tier": 2,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "decal_moss_patch",
+      "tier": 3,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "decal_salt_bloom",
+      "tier": 3,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "decal_water_streak",
+      "tier": 3,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "decal_soot_grime",
+      "tier": 3,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha"
+      ]
+    },
+    {
+      "id": "decal_stone_crack",
+      "tier": 3,
+      "tile_m": 2.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha",
+        "normal"
+      ]
+    },
+    {
+      "id": "metal_iron_grille",
+      "tier": 3,
+      "tile_m": 1.0,
+      "decal_alpha": true,
+      "maps": [
+        "albedo_alpha"
+      ]
+    },
+    {
+      "id": "fabric_tapestry",
+      "tier": 3,
+      "non_tiling": true,
+      "maps": [
+        "albedo_alpha",
+        "normal",
+        "roughness"
+      ]
+    },
+    {
+      "id": "wood_props_kit",
+      "tier": 3,
+      "tile_m": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    }
   ],
   "interiors_required": [
-    "main_gatehouse", "inner_courtyard", "state_corridor", "kings_bedchamber", "great_library",
-    "dungeons", "great_dining_hall", "kitchens", "armoury", "guest_chamber",
-    "royal_gardens", "tower_interior", "secret_passages", "vaults_cellars"
+    "main_gatehouse",
+    "inner_courtyard",
+    "state_corridor",
+    "kings_bedchamber",
+    "great_library",
+    "dungeons",
+    "great_dining_hall",
+    "kitchens",
+    "armoury",
+    "guest_chamber",
+    "royal_gardens",
+    "tower_interior",
+    "secret_passages",
+    "vaults_cellars"
   ],
-  "mta_structure": ["meta.xml", "client.lua", "README.txt", "models/castle.dff", "models/castle.txd", "models/castle.col", "textures/", "lod/"],
+  "mta_structure": [
+    "meta.xml",
+    "client.lua",
+    "README.txt",
+    "models/castle.dff",
+    "models/castle.txd",
+    "models/castle.col",
+    "textures/",
+    "lod/"
+  ],
   "environment_lighting": {
-    "day": { "time_override": 12, "shader": "none", "emissive_windows": false },
-    "night": { "time_override": 0, "shader": "shaders/window_emissive.fx", "emissive_windows": true },
-    "auto_switch": { "day_window": [7, 19], "check_interval_s": 30 }
+    "day": {
+      "time_override": 12,
+      "shader": "none",
+      "emissive_windows": false
+    },
+    "night": {
+      "time_override": 0,
+      "shader": "shaders/window_emissive.fx",
+      "emissive_windows": true
+    },
+    "auto_switch": {
+      "day_window": [
+        7,
+        19
+      ],
+      "check_interval_s": 30
+    }
   }
 }

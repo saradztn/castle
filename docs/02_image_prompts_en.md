@@ -26,9 +26,9 @@ TERRACED TOWNIN between the walls: six stepped terrace levels dropping 8 to 14 m
 
 HARBOUR at the base: three stone quays totalling 220 m of frontage, two groups of timber piles and jetties standing 6 to 9 m above the water, eight steep-roofed warehouses 14 by 9 m, a timber crane, moored three-masted sailing ships, fishing boats and rowing skiffs, stone stairs cut into the rock down to the waterline, ropes, nets, crates and barrels on the quay, gulls wheeling overhead.
 
-CAUSEWAY BRIDGE: a 260 m long arched stone viaduct on fourteen spans of 16 m with a 9 m wide deck, stone balustrade, and carved lamp columns every 20 m, terminating at a twin-towered bridge gatehouse on the mainland shore.
+CAUSEWAY BRIDGE: a long arched stone causeway on eight semicircular arches with cutwater piers, about 170 m long with a 9 m wide deck, a stone balustrade, carved lamp columns and statues at the far end, terminating where the causeway meets the rock at a twin-towered sea gate crowned with steep conical roofs and crimson banners.
 
-WATER FEATURES: three waterfalls of 46 m, 62 m and 30 m pouring off the rock face into the sea on the left, spray and foam at the base, small plunge pools, a 2.2 m wide stone culvert channel crossing the town to the harbour, gentle swell, breaking waves on the rocks, wakes behind the ships.
+WATER FEATURES: two great waterfalls of about 60 m and 35 m pouring off the left rock face into the sea, heavy spray and foam at the base, mist drifting over the water, a 2.2 m wide stone culvert channel crossing the town to the harbour, gentle swell, breaking waves on the rocks, wakes behind the ships.
 
 LANDSCAPE: stratified sea cliffs with horizontal bedding, a few pines and oaks on the terraces and the upper plateau, terraced royal gardens with low hedges and a circular fountain, shrubs clinging to the rock, moss and lichen on the sea-facing stonework, sea mist gathering at the waterline, birds, distant sailboats.
 
@@ -48,7 +48,7 @@ NEGATIVE: flat terrain, castle on a plain, cartoon, anime, painterly illustratio
 ```text
 True top-down orthographic map of the entire coastal castle-city promontory, architectural master plan style, flat even lighting, clear readable geometry, water rendered as flat deep teal, no perspective distortion.
 
-Show: the rocky promontory with the summit palace-cathedral complex at the top; the three concentric curtain wall circuits; the six terraced town levels with their streets, alleys, stairways and arched bridges; the mid-town church with its bell tower; the market squares; the harbour with three quays, timber jetties, warehouses and moored ships; the 260 m arched causeway bridge with fourteen spans crossing the water to the mainland; three waterfalls on the rock face; the royal terraced gardens with a circular fountain; the culvert channel; the lighthouse on the breakwater.
+Show: the rocky promontory with the summit palace-cathedral complex at the top; the three concentric curtain wall circuits; the six terraced town levels with their streets, alleys, stairways and arched bridges; the mid-town church with its bell tower; the market squares; the harbour with three quays, timber jetties, warehouses and moored ships; the arched causeway bridge with eight spans crossing the water to the mainland; two waterfalls on the rock face; the royal terraced gardens with a circular fountain; the culvert channel; the lighthouse on the breakwater.
 
 Mark 16 numbered circular zone markers (1 to 16) with small leader lines, evenly distributed over: 1 palace-cathedral, 2 upper courtyard with fountain, 3 main gatehouse, 4 lower town market, 5 mid-town church, 6 great library hall, 7 dungeons, 8 vaults and cellars, 9 royal gardens, 10 harbour, 11 causeway bridge, 12 towers and battlements, 13 armoury, 14 great dining hall, 15 secret passages, 16 kitchens.
 
@@ -60,7 +60,7 @@ Add a decorative compass rose with N/E/S/W and a 0–100–200 m scale bar. Mute
 ## 2. Sheet C — Aerial Overview (top view, cinematic)
 
 ```text
-Cinematic high-altitude aerial photograph looking steeply down at 60 degrees on the coastal castle-city promontory, the whole island in frame with sea all around, harbour at the bottom, the spire-crowned palace on the summit, six terraced town levels, three wall circuits, causeway bridge entering from the right, three waterfalls streaming off the rock, golden-hour light with warm stone and cool blue water, light mist, photorealistic, ultra-detailed, 4K, no watermark.
+Cinematic high-altitude aerial photograph looking steeply down at 60 degrees on the coastal castle-city promontory, the whole island in frame with sea all around, harbour at the bottom, the spire-crowned palace on the summit, six terraced town levels, three wall circuits, causeway bridge entering from the right, two great waterfalls streaming off the left rock face, golden-hour light with warm stone and cool blue water, light mist, photorealistic, ultra-detailed, 4K, no watermark.
 ```
 
 ---
@@ -123,9 +123,9 @@ Orthographic architectural elevation sheet on a plain white background, three vi
 |---|---|
 | **Summit palace hero** | `Close view of the spire-crowned palace on the summit rock: one huge central spire with gilded finial, six secondary conical-roofed spires, flying buttresses, tall tracery windows, rose window, crenellated round towers, ceremonial ramp with a monumental pointed-arch gate, warm sandstone, dark slate, gold, banners — three-quarter view, golden hour, photorealistic, 4K.` |
 | **Main gatehouse front** | `Straight-on view of the main castle gatehouse: pointed arch 6 by 9 m with bold voussoirs, twin portcullises, murder holes, flanking round towers with machicolation rings and conical slate roofs, drawbridge over a dry rock ditch, barbican stubs, guards' walkway, weathered granite, banners — photorealistic, 4K.` |
-| **Causeway bridge** | `The 260 m arched stone causeway bridge viewed from the water: fourteen semicircular spans, cutwater piers, 9 m deck with stone balustrade, carved lamp columns, a twin-towered bridge gatehouse at the far end, seabirds, gentle swell, golden-hour light, photorealistic, 4K.` |
+| **Causeway bridge** | `The arched stone causeway bridge viewed from the water: eight semicircular arches on cutwater piers, a 9 m deck with a stone balustrade, carved lamp columns, statues at the far end, terminating at a twin-towered sea gate with steep conical roofs and crimson banners, seabirds, gentle swell, golden-hour light, photorealistic, 4K.` |
 | **Harbour** | `Working medieval harbour at the foot of a cliff castle: stone quays, timber pile jetties, steep-roofed warehouses, a timber crane, moored three-masted ships, fishing boats, barrels, nets, crates, stone stairs cut into the rock, gulls, cool morning light on the water, photorealistic, 4K.` |
-| **Waterfalls & cliff** | `Stratified sea cliff with three waterfalls of 46, 62 and 30 m plunging into the sea, spray and foam, moss and lichen on wet stone, a small plunge pool, seabirds, the terraced town walls and rooftops above the cliff edge, late-afternoon light, photorealistic, 4K.` |
+| **Waterfalls & cliff** | `Stratified sea cliff with two great waterfalls of about 60 m and 35 m plunging into the sea, heavy spray and foam, moss and lichen on wet stone, sea mist, the terraced town walls and rooftops above the cliff edge, late-afternoon light, photorealistic, 4K.` |
 | **Texture swatch board** | `Material swatch board, twelve squares in a 6 by 2 grid with thin gutters, each a flat seamless sample under even light with no shadows: warm sandstone ashlar, grey granite, sea-weathered mossy stone, dark slate roof, terracotta roof tiles, light oak timber, dark walnut panelling, pale veined marble, deep red wool fabric with gold embroidery, brown leather, woven carpet, leaded glass with diamond quarries. Technical texture-reference sheet, sharp macro detail, 4K, no watermark, no text.` |
 
 ---
@@ -134,7 +134,7 @@ Orthographic architectural elevation sheet on a plain white background, three vi
 
 **PREFIX — add to the start of every prompt**
 ```text
-Consistent with the reference design: coastal castle-city on a rocky promontory, three concentric wall circuits, six terraced town levels, spire-crowned palatial cathedral on the summit, harbour below, long arched causeway bridge, three waterfalls, warm sandstone and grey granite, dark blue-grey slate roofs, crimson and gold banners, temperate maritime climate with light moss and salt weathering, golden-hour or cool-night light as specified.
+Consistent with the reference design: coastal castle-city on a rocky promontory, three concentric wall circuits, six terraced town levels, spire-crowned palatial cathedral on the summit, harbour below, long arched causeway bridge, two great waterfalls, warm sandstone and grey granite, dark blue-grey slate roofs, crimson and gold banners, temperate maritime climate with light moss and salt weathering, golden-hour or cool-night light as specified.
 ```
 
 **NEGATIVE — use with every prompt**
