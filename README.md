@@ -15,6 +15,9 @@
 | [`docs/03_texture_prompts_en.md`](docs/03_texture_prompts_en.md) | ✅ **مُعاد كتابته** | **38 خامة PBR 4K** مطابقة للوحة الخامات في المرجع + برومبت كل خامة + قواعد التسليم |
 | [`docs/04_mta_technical_spec_ar.md`](docs/04_mta_technical_spec_ar.md) | ✅ **جديد** | بنية المشروع كما في المرجع (`meta.xml` / `client.lua` / `models` / `lod`) + كود نهار/ليل **كامل ومصحّح** + ميزانية LOD والأداء |
 | [`docs/textures.manifest.json`](docs/textures.manifest.json) | ✅ **محدّث** | المناطق 1–16، الأبعاد بالأمتار، لوحة الألوان، قائمة الخامات، داخلليات المرجع |
+| [`prompts/01_reference_sheets_ready.txt`](prompts/01_reference_sheets_ready.txt) | ✅ **جديد — انسخ والصق** | كل أوراق المرجع (A→I) + الداخليات الأربع عشرة، **مُجمَّعة كاملة بلا أقواس** |
+| [`prompts/02_textures_ready.txt`](prompts/02_textures_ready.txt) | ✅ **جديد — انسخ والصق** | الـ38 خامة PBR كاملة (بادئة + وصف + قفل أسلوب) جاهزة للنسخ المباشر |
+| [`prompts/03_short_version.txt`](prompts/03_short_version.txt) | ✅ **جديد** | نسخ مختصرة (450 / 900 حرف + نسخة Midjourney) للمولّدات محدودة الأحرف |
 
 > تنبيه: الموجز السابق (قلعة داخلية بأربعة أبراج) **أُلغي بالكامل** — كل شيء الآن مبني على الصورة المرجعية.
 
