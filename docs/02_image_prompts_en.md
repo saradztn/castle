@@ -1,126 +1,145 @@
-# Reference Sheets — Ready-to-Paste Image Prompts (EN)
-### Castle Aldurn — 9 sheets, ONE single design
+# Reference Sheets — Ready-to-Paste Prompts (EN)
+### Castle & Palace — Coastal Castle-City (rewritten to match the attached reference image)
 
-**How to use**
-1. Generate **Sheet A (hero)** first with the `MASTER PROMPT` below.
-2. Lock the design: reuse the same seed, and use Sheet A as an **image reference / ControlNet input** for every following sheet (img2img strength ≈ 0.35–0.5 for elevations, 0.5–0.6 for courtyard/night).
-3. If your tool supports it, add a **ControlNet depth or lineart** pass for B/C/D to force orthographic accuracy.
-4. Deliver 3840 px PNG, sRGB, no watermark, no text (except the required scale bar).
+> **How to use**
+> 1. Generate **Sheet A** (master hero) with the `MASTER PROMPT` below. This is the image everything else must agree with.
+> 2. Lock the seed; use Sheet A as an **image reference / ControlNet (depth + lineart)** input for every following sheet.
+> 3. Deliver **3840 px PNG**, sRGB, no watermark, no text other than the required labels.
+> 4. **Same design in every sheet**: same number of spires, same wall circuits, same terrace levels, same colours, same weathering.
 
-> **Consistency rule:** same tower count (4 corner + 2 gatehouse + 1 stair turret), same heights, same materials, same colours, same weathering level, in every sheet. The silhouette sheet (I) is what the 3D reconstruction is measured against.
-
----
-
-## 0. MASTER PROMPT (hero, Sheet A)
-
-```text
-Photorealistic architectural visualization of a historically accurate high-medieval European stone castle with an inner palace, Norman / early-English-Gothic transitional, real defensive architecture, not fantasy. Rectangular curtain wall 72 m by 54 m, 2.4 m thick, 9 m high to a 1.6 m wall-walk, crenellations with 1.8 m merlons and 1.2 m embrasures, arrow slits, string courses, stepped buttresses, three corbelled garderobe chutes on the north wall. Four round corner towers 9.5 m in diameter, 18 m to the cornice, projecting stone-corbelled machicolation rings at 15 m, crenellated parapets topped by steep dark blue-grey slate conical roofs with wrought-iron finials and pennants, about 26 m tall. Gatehouse projecting 4 m from the centre of the south wall: two identical round towers 11 m in diameter, 21 m tall, machicolated and crenellated, framing a pointed-arch gateway 4.6 m wide and 7 m tall with bold voussoirs, raised black iron portcullis, heavy double oak doors with iron bands and studs, timber drawbridge across a dry rock-cut moat 9 m wide and 6.5 m deep with ashlar revetment, low barbican wall stubs, vaulted gate passage with murder holes. Free-standing square keep 16 m by 16 m, 26 m high, crenellated, four corbelled corner bartizans and a round stair turret rising to 36 m with a conical slate roof, the tallest element. Inside the courtyard along the north wall a two-storey palace 36 m by 15 m, 13 m to the eaves, steep 52-degree dark slate pitched roof, three stone dormers, two stone chimney stacks with corbelled caps, south façade of tall pointed-arch mullioned and transomed windows with leaded diamond-pane glass and carved stone surrounds, east end with a chapel apse, buttresses and a 3 m stained-glass rose window, west end with an external stone staircase to a first-floor arched entrance behind a two-column portico. Service block along the west wall, single storey, pitched slate roof, arched timber doors, forge chimney. Cobbled courtyard 40 m by 30 m with a stone well under a small gabled canopy on oak posts, a wide stone stair to the wall-walk, a stone trough, two English oaks, iron torch brackets. The castle stands on a gentle grassy mound with steep natural bedrock outcrops below the east and south walls, a gravel path leading to the drawbridge. Materials: cool grey weathered limestone ashlar #9A958C with moss in the joints and dark water staining under cornices, rough rubble stone at the bases, smooth dressed limestone trim #ABA69C on quoins, copings and window surrounds, dark blue-grey slate roofs #3B4148, dark oak #5C4128 doors and timbers, black wrought iron #2A2A2C fittings, oxidized copper #4E8A72 on ridges and finials, crimson and gold banners #6E1B22 and #C8A24A bearing a golden crenellated tower on a crimson field. Golden hour lighting, sun 12 degrees above the horizon from the west-southwest, warm 3000K key, long soft shadows, cool 6500K ambient sky fill, light atmospheric haze. Three-quarter elevation view from the south-west at 25 m camera height, 35 mm lens, minimal perspective distortion, whole castle in frame, gatehouse clearly visible. Ultra-detailed geometry, crisp stone coursing, physically based materials, 4K, sharp focus, architectural reference photograph quality.
-```
-
-**Negative prompt (use everywhere):**
-```text
-fantasy castle, cartoon, anime, stylised illustration, low-poly, toy-like, neon, over-saturated, glowing magic, floating structures, dragons, modern elements, cars, power lines, crowds, text, watermark, signature, motion blur, heavy vignette, fog hiding architecture, tilted camera, fisheye, warped proportions, extra towers, inconsistent architecture
-```
+**Universal additions to every prompt below:** `[PREFIX] / [NEG]` blocks at the end of this file.
 
 ---
 
-## 1. Sheet B — South Elevation (orthographic)
+## 0. MASTER PROMPT — Sheet A (the reference hero shot)
 
 ```text
-Orthographic architectural elevation, true orthographic projection with no perspective distortion, straight-on front view of the SOUTH facade of the castle described below, flat neutral light-grey background, even overcast diffuse lighting, no harsh shadows, all architectural detail perfectly readable, no vegetation covering the masonry.
+Cinematic photorealistic aerial view of a colossal medieval castle-city built on a rocky coastal promontory, real late-medieval to early-Renaissance architecture with a fantasy-realistic sense of scale, NOT a cartoon and NOT a single castle on flat ground.
 
-Subject: rectangular curtain wall 72 m wide and 10.4 m to the top of the crenellated parapet, stepped buttresses every 9 m, horizontal string courses at 4 m and 8 m, thin vertical arrow slits and a few cross-shaped embrasures. Perfectly centred gatehouse projecting forward: two identical round towers 11 m in diameter and 21 m tall, machicolated with two projecting stone rings on corbels, crenellated parapets, framing a pointed-arch gateway 4.6 m wide and 7 m tall with bold voussoirs, a raised black iron portcullis, heavy double oak doors with iron bands, a timber drawbridge, low barbican wall stubs to each side. Behind the wall, rising above it: the four corner towers with steep dark slate conical roofs and iron finials on the far corners, the square keep in the middle background with its crenellated parapet and four corner bartizans, the round stair turret with its tall conical slate roof, and the palace roof ridge with two stone chimney stacks and dormers.
+Composition: three-quarter aerial view from the south-east, camera altitude about 160 m, 40 mm lens, minimal distortion. The promontory occupies the left-centre two thirds of the frame with the open sea wrapping around it on three sides; the stone causeway enters the frame from the right foreground and crosses the water toward the sea gate; snow-capped mountains and layered cloud banks lie on the far horizon; a long coastline of dark cliffs recedes to the right.
 
-Materials: weathered grey limestone ashlar with visible 60 by 30 cm coursing and moss in the joints, darker rubble stone at the base, smooth lighter limestone trim on quoins, copings, machicolations and window surrounds, dark blue-grey slate roofs, dark oak doors, black wrought iron. Include one standing human figure 1.8 m tall at the foot of the gatehouse as a scale reference and a 5 m / 10 m scale bar beneath the elevation, plus a thin ground line. Photorealistic architectural drafting render, crisp masonry joints, 4K, no text other than the scale bar, no watermark.
-```
+SUMMIT PALACE / CATHEDRAL on the rock plateau: a grand palace-cathedral complex 110 m by 80 m with one enormous central spire 95 m tall above the plateau, six secondary conical-roofed spires 38 to 60 m, two massive round towers 14 m in diameter and 46 m tall with crenellated parapets and machicolations, ten flying buttresses spanning 6 m gaps, tall pointed-arch tracery windows 3.5 to 9 m high with leaded diamond panes, a rose window on the main façade, gilded finials and weather vanes, crimson and gold banners on the towers, and a 9 m wide ceremonial ramp with a monumental pointed-arch gate.
 
----
+FORTRESS RINGS descending the rock: three concentric curtain walls — upper circuit about 180 by 130 m, middle circuit 250 by 190 m, lower circuit 330 by 250 m — 12 to 16 m tall, 3 to 4.2 m thick, with crenellated parapets, machicolated round towers 11 to 16 m in diameter carrying steep slate conical roofs, square mural towers, arrow slits and cross-shaped embrasures, a main gatehouse with a 6 by 9 m pointed arch, twin portcullises and hoardings, and a fortified sea gate with two 12 m round towers opening directly onto the harbour water.
 
-## 2. Sheet C — East Elevation (orthographic)
+TERRACED TOWNIN between the walls: six stepped terrace levels dropping 8 to 14 m each, about 320 buildings with steep 48-degree gabled roofs in dark slate, ochre terracotta and grey shingle, half-timbered upper storeys over stone ground floors, narrow stepped alleys 2.6 to 4.5 m wide, five arched stone bridges spanning between terraces, small market squares with arcades, a mid-town church 26 by 12 m with a 34 m bell tower and spire, chimneys with smoke, hanging shop signs, water troughs and stairways everywhere.
 
-```text
-Orthographic architectural elevation, true orthographic projection with no perspective distortion, straight-on side view of the EAST facade of the castle described below, flat neutral light-grey background, even overcast diffuse lighting, no harsh shadows, all masonry readable.
+HARBOUR at the base: three stone quays totalling 220 m of frontage, two groups of timber piles and jetties standing 6 to 9 m above the water, eight steep-roofed warehouses 14 by 9 m, a timber crane, moored three-masted sailing ships, fishing boats and rowing skiffs, stone stairs cut into the rock down to the waterline, ropes, nets, crates and barrels on the quay, gulls wheeling overhead.
 
-Subject: rectangular curtain wall 54 m wide, 2.4 m thick, 9 m to the wall-walk and 10.4 m to the top of the crenellated parapet, stepped buttresses every 9 m, string courses at 4 m and 8 m, two rows of thin vertical arrow slits, corbelled garderobe chutes. At both corners two round towers 9.5 m in diameter and 18 m to the cornice with projecting machicolation rings and crenellated parapets crowned by steep dark slate conical roofs with wrought-iron finials. Above the wall, seen in the interior: the square keep with crenellations and corner bartizans, the round stair turret with its conical slate roof, and the palace gable end with its steep 52-degree slate roof, stone dormer, chimney stack and the chapel apse with a stained-glass rose window and buttresses. Below the wall a steep natural rock outcrop and a dry rock-cut moat with ashlar revetment.
+CAUSEWAY BRIDGE: a 260 m long arched stone viaduct on fourteen spans of 16 m with a 9 m wide deck, stone balustrade, and carved lamp columns every 20 m, terminating at a twin-towered bridge gatehouse on the mainland shore.
 
-Materials: weathered grey limestone ashlar with visible coursing, moss in the joints, dark water staining under the cornices, rubble stone at the base, lighter dressed limestone trim, dark slate roofs, oxidized copper ridge caps. Include one 1.8 m human figure and a 5 m / 10 m scale bar with a thin ground line. Photorealistic architectural drafting render, 4K, no watermark.
+WATER FEATURES: three waterfalls of 46 m, 62 m and 30 m pouring off the rock face into the sea on the left, spray and foam at the base, small plunge pools, a 2.2 m wide stone culvert channel crossing the town to the harbour, gentle swell, breaking waves on the rocks, wakes behind the ships.
+
+LANDSCAPE: stratified sea cliffs with horizontal bedding, a few pines and oaks on the terraces and the upper plateau, terraced royal gardens with low hedges and a circular fountain, shrubs clinging to the rock, moss and lichen on the sea-facing stonework, sea mist gathering at the waterline, birds, distant sailboats.
+
+MATERIALS AND COLOURS: warm sandstone ashlar #BFA57E with darker #9C8262 weathering for the palace and the citadel; cool grey granite #8E8C86 to #6B6963 for the rings, quays and causeway; lime-washed plaster #D9CFB8 with dark half-timber #4E3624 in the town; dark blue-grey slate roofs #3A4148 to #4A535C with moss and gull staining; weathered terracotta #8C5A43; oxidized copper #4E8A72 on ridges and cupolas; gilded bronze #C8A24A on spire finials and weather vanes; crimson and gold banners #6E1B22 and #C8A24A bearing a golden tower sigil; teal-green sea #2E5E63 shading to deep #12333B; green vegetation #4E6B3A.
+
+LIGHTING: late golden hour, sun low at 12 degrees in the upper left breaking through broken cloud, warm raking light on the west-facing stonework, cool blue shadow fill in the alleys, light haze and visible sun rays, mist at the waterline, crisp long shadows down the terraces.
+
+RENDER: photorealistic cinematic architectural visualization, ultra-detailed geometry, physically based materials, HDR lighting, 4K, sharp focus, epic but believable, no stylisation.
+
+NEGATIVE: flat terrain, castle on a plain, cartoon, anime, painterly illustration, low-poly, toy-like, neon colours, magic glow, floating structures, dragons, modern buildings, cars, power lines, text, watermark, signature, warped proportions, fisheye, heavy vignette, fog hiding the architecture.
 ```
 
 ---
 
-## 3. Sheet D — North Elevation (orthographic)
+## 1. Sheet B — Top-Down Master Map (the numbered zone map in the reference)
 
 ```text
-Orthographic architectural elevation, true orthographic projection with no perspective distortion, straight-on view of the NORTH facade of the castle described below, flat neutral light-grey background, even overcast diffuse lighting, no harsh shadows.
+True top-down orthographic map of the entire coastal castle-city promontory, architectural master plan style, flat even lighting, clear readable geometry, water rendered as flat deep teal, no perspective distortion.
 
-Subject: 72 m long curtain wall with crenellated parapet, stepped buttresses, string courses, thin arrow slits and three corbelled garderobe chutes projecting on stone corbels. Rising above the wall: the palace back roof — a long steep 52-degree dark slate pitch with three stone dormers, two tall stone chimney stacks with corbelled caps, and carved stone gable ends — plus the four corner towers with their conical slate roofs and the keep with its stair turret behind them.
+Show: the rocky promontory with the summit palace-cathedral complex at the top; the three concentric curtain wall circuits; the six terraced town levels with their streets, alleys, stairways and arched bridges; the mid-town church with its bell tower; the market squares; the harbour with three quays, timber jetties, warehouses and moored ships; the 260 m arched causeway bridge with fourteen spans crossing the water to the mainland; three waterfalls on the rock face; the royal terraced gardens with a circular fountain; the culvert channel; the lighthouse on the breakwater.
 
-Materials: weathered grey limestone ashlar with coursing and moss in the joints, rubble base, lighter trim on copings and chutes, dark blue-grey slate roofing, dark oak shutters, black iron fittings. Include one standing 1.8 m human figure and a 5 m / 10 m scale bar with a thin ground line. Photorealistic architectural drafting render, 4K, no watermark.
+Mark 16 numbered circular zone markers (1 to 16) with small leader lines, evenly distributed over: 1 palace-cathedral, 2 upper courtyard with fountain, 3 main gatehouse, 4 lower town market, 5 mid-town church, 6 great library hall, 7 dungeons, 8 vaults and cellars, 9 royal gardens, 10 harbour, 11 causeway bridge, 12 towers and battlements, 13 armoury, 14 great dining hall, 15 secret passages, 16 kitchens.
+
+Add a decorative compass rose with N/E/S/W and a 0–100–200 m scale bar. Muted parchment-free modern plan colours: warm sandstone buildings, grey walls, dark slate roofs, teal water, green gardens. Crisp, clean, ultra-detailed, 4K, no watermark, no text other than the numbers and the scale.
 ```
 
 ---
 
-## 4. Sheet E — Roof Plan (orthographic, top view)
+## 2. Sheet C — Aerial Overview (top view, cinematic)
 
 ```text
-True orthographic top-down roof plan of the castle described below, flat neutral grey background, even diffuse lighting, architectural plan clarity, all roof surfaces and wall tops readable, no perspective distortion.
-
-Layout: a rectangular curtain wall 72 m by 54 m, 2.4 m thick, its crenellated wall-walk drawn as a continuous band; four round corner towers 9.5 m in diameter with four-segment conical slate roofs and iron finials at the corners; a projecting gatehouse at the centre of the south wall with two round towers 11 m in diameter and a central gate passage; a free-standing square keep 16 m by 16 m at the centre of the courtyard with a crenellated flat top, four corner bartizans and a round stair turret with a conical roof at the north-east corner; a long palace block 36 m by 15 m along the inner face of the north wall with a steep pitched slate roof, a central ridge, two chimney stacks and three dormers on the south pitch, plus a semicircular chapel apse at its east end with a small conical roof; a single-storey service block 22 m by 9 m along the inner face of the west wall with a pitched roof and a small forge chimney; a cobbled courtyard 40 m by 30 m with a central stone well under a small square gabled canopy, a stone staircase running up to the wall-walk along the west wall, a stone trough, and two trees.
-
-Materials: grey weathered limestone wall tops with visible coursing, dark blue-grey slate roofing with visible overlapping courses, weathered terracotta on the well canopy, cobblestone paving in the courtyard. Add a 5 m / 10 m scale bar and a north arrow. Photorealistic architectural plan render, sharp detail, 4K, no watermark.
+Cinematic high-altitude aerial photograph looking steeply down at 60 degrees on the coastal castle-city promontory, the whole island in frame with sea all around, harbour at the bottom, the spire-crowned palace on the summit, six terraced town levels, three wall circuits, causeway bridge entering from the right, three waterfalls streaming off the rock, golden-hour light with warm stone and cool blue water, light mist, photorealistic, ultra-detailed, 4K, no watermark.
 ```
 
 ---
 
-## 5. Sheet F — Courtyard Interior
+## 3. Sheet D — Night View (the reference night panel)
 
 ```text
-Photorealistic architectural interior view standing in the cobbled courtyard of a high-medieval stone castle, eye height 1.8 m, 24 mm lens, natural perspective. In front of the camera the free-standing square keep, 16 m by 16 m, 26 m tall, crenellated, with corbelled corner bartizans and a round stair turret rising taller with a conical dark slate roof. To the right, the two-storey palace along the north wall: 13 m to the eaves, steep 52-degree dark slate roof, three stone dormers, two stone chimney stacks, and a regular rhythm of tall pointed-arch mullioned and transomed windows with leaded diamond-pane glass and carved stone surrounds; at its east end the chapel apse with a stained-glass rose window. To the left, the single-storey service block with arched timber doors and a forge chimney. Behind, the gatehouse with its vaulted passage and timber double doors. In the middle of the courtyard a stone well with a small gabled canopy on two oak posts, a pulley and a bucket, a stone trough, an iron wall torch bracket, two English oaks, and a wide stone staircase climbing to the crenellated wall-walk. Cobblestone paving worn into a walking path.
-
-Lighting: late-afternoon warm light raking across the courtyard, soft shadows, cool blue skylight fill in the shaded arcades, dust motes in the light beams. Materials: weathered grey limestone ashlar with moss in the joints and dark staining under cornices, lighter dressed trim, dark oak, black wrought iron, dark blue-grey slate, crimson and gold banner hanging from the keep wall bearing a golden crenellated tower on a crimson field. Ultra-detailed, physically based materials, 4K, sharp focus.
+Photorealistic night view of the same coastal castle-city from the same three-quarter aerial angle, deep blue moonlight and a sky full of stars, thousands of warm orange window lights scattered across the terraced town, torch and lantern light along the walls, the quays and the causeway, braziers on the spire platforms, the palace windows blazing gold, the lighthouse beam sweeping the water, faint warm reflections on the harbour water and wet stone, thin mist glowing around the rock, all architectural silhouettes clearly readable, film-like realistic exposure, physically based lighting, no fantasy glow, no magic, 4K, no watermark.
 ```
 
 ---
 
-## 6. Sheet G — Night View
+## 4. Sheet E — LOD System Sheet (four panels in one image)
 
 ```text
-Photorealistic night architectural view of the same high-medieval stone castle from the south-west three-quarter angle, 35 mm lens, whole castle in frame, gatehouse visible, exactly the same design and proportions as the daytime views. Cool blue moonlight from behind thin clouds, deep blue ambient sky, warm orange torch light pooling around the gatehouse, along the curtain wall and in the courtyard, warm glowing leaded windows in the palace and keep, faint reflections on the dry moat revetment and wet cobbles, stars visible, thin mist in the low ground. The crenellated silhouette of the towers, the keep, the conical slate roofs and the palace ridge reads clearly against the night sky. Realistic film-like exposure, deep shadows but readable masonry, physically based lighting, 4K, sharp focus, no fantasy glow, no magic effects, no watermark.
+Clean technical comparison sheet with four stacked panels showing the same coastal castle-city at four levels of detail, identical camera angle in all four, labelled HIGH LOD, MEDIUM LOD, LOW LOD, DISTANT LOD:
+panel 1 High LOD — every window, battlement, stair, bridge, ship and decorative detail present;
+panel 2 Medium LOD — decorative details removed, small houses merged into simple blocks, roofs and towers intact;
+panel 3 Low LOD — simplified prismatic masses with roofs and chimneys only, no windows, no props, no ships;
+panel 4 Distant LOD — a coarse silhouette of the rock promontory, the town mass and the spire-crowned citadel against the sea, low-detail textures.
+Neutral grey background, thin dividers, minimal labels in a clean sans-serif, technical documentation aesthetic, 4K, no watermark.
 ```
 
 ---
 
-## 7. Sheet H — Detail Sheet (six close-ups, one image, same design and lighting)
+## 5. Sheet F — Elevations & Silhouette (for exact 3D measurement)
 
 ```text
-Architectural detail sheet: six close-up photographs of the same high-medieval castle, arranged in a clean 3 by 2 grid with thin gutters, identical overcast lighting and materials in every tile, photorealistic, ultra-detailed, 4K.
-
-Tile 1: the gatehouse — round machicolated tower, corbelled stone ring with murder holes, crenellated parapet, pointed-arch gateway with bold voussoirs, raised black iron portcullis, heavy double oak doors with iron bands and studs.
-Tile 2: a tall pointed-arch mullioned and transomed palace window with carved stone surround, leaded diamond-pane glass, a stone sill with water staining, and a small square hood mould above.
-Tile 3: crenellation and machicolation detail — merlons 1.8 m wide and 1.4 m tall with sloped coping, embrasures, weathering, moss in joints, dark water streaks running down the ashlar.
-Tile 4: the courtyard well — a 3.2 m stone drum with a low parapet, a small gabled terracotta canopy on two oak posts, a wooden pulley wheel, an iron chain and a bucket, cobblestone ground around it.
-Tile 5: a stone chimney stack with corbelled cap rising above a steep dark slate roof, three courses of visible slates, a lead flashing and oxidized copper ridge cap.
-Tile 6: the heraldic banner — crimson cloth with a golden crenellated tower and an open arched gate, a gold chevron below, woven texture, wind creases, hanging on an iron rod against ashlar masonry.
-
-Materials consistent across all tiles: weathered grey limestone ashlar #9A958C, lighter dressed trim #ABA69C, dark blue-grey slate #3B4148, dark oak #5C4128, black wrought iron #2A2A2C, oxidized copper #4E8A72, crimson and gold cloth #6E1B22 and #C8A24A. No text, no watermark, no logos.
+Orthographic architectural elevation sheet on a plain white background, three views side by side, hard clean edges, even diffuse lighting, no perspective and no shadows, of a coastal castle-city promontory: view 1 the sea-facing elevation of the promontory showing the rock cliff with its stratified layers, the three curtain wall circuits, the round towers with conical roofs, the terrace walls with houses behind them, the harbour quays, and the spire-crowned palace on the summit; view 2 the outline silhouette of the same view as solid black on white with no interior detail; view 3 a cross-section through the promontory showing the summit plateau, the palace block, the stepped terraces and the internal vaulted cellars and passages cut into the rock. Include a 1.8 m human figure, a 5 m / 10 m / 50 m scale bar and a thin ground line. Technical, precise, readable, 4K, no watermark.
 ```
 
 ---
 
-## 8. Sheet I — Silhouette Sheet (critical for 3D accuracy)
+## 6. Interior Sheets (the 14 rooms of the reference)
 
-```text
-Pure black silhouette sheet on a plain white background, no shading, no interior detail, no texture, hard clean edges, true orthographic projections, three views side by side on one canvas: front elevation (south facade, 72 m wide), side elevation (east facade, 54 m wide) and a top-down roof plan, of the following structure. Rectangular curtain wall with a crenellated parapet and stepped buttresses; a projecting central gatehouse with two round towers; four round corner towers with tall conical roofs; behind the wall a free-standing square keep with a crenellated top, four small corner bartizan turrets and a taller round stair turret with a conical roof; a long palace block with a steep pitched roof, two chimney stacks and three dormers; a chapel apse at one end of the palace; a single-storey service block. The silhouette must show the exact massing, proportion and height relationships between the wall, the corner towers, the keep and the stair turret. Include a 5 m / 10 m scale bar beneath each view and a thin ground line. Flat vector-like precision, no perspective, no shadows, no gradients, no watermark.
-```
+> Generate each on its own; **same design language, same materials, same lighting family** in all of them.
+
+| # | Sheet | Prompt |
+|---|---|---|
+| 1 | **Main gatehouse** | `Interior of a monumental medieval castle gatehouse passage, ribbed stone vault, twin portcullises above, murder holes in the ceiling, deep pointed arch behind, guards' doorway, torch brackets with burning torches, warm firelight against cool daylight spilling from the courtyard end, worn flagstones, oak doors with iron bands, photorealistic, ultra-detailed, 4K.` |
+| 2 | **Inner courtyard** | `Sunlit inner courtyard of a castle palace, circular tiered fountain in the centre, arcaded cloister with pointed arches on two sides, flowering borders and clipped hedges, stone benches, banners hanging from the arcade, warm sandstone walls with weathering, blue sky and clouds overhead, late-afternoon light, photorealistic, ultra-detailed, 4K.` |
+| 3 | **State corridor** | `Long state corridor inside a royal palace, deep crimson carpet runner over a polished marble floor, ribbed stone vault with carved bosses, tall tracery windows throwing shafts of light, gilt-framed portraits and tapestries between them, wall sconces with candles, warm gold and deep red palette, photorealistic, ultra-detailed, 4K.` |
+| 4 | **King's bedchamber** | `Royal bedchamber, massive four-poster bed with deep red velvet hangings and gold embroidery, carved oak panelling, a hooded stone fireplace with a fire burning, leaded windows with heavy drapes, a writing desk with candles, a fur rug over a stone floor, tapestries, warm candle and firelight, photorealistic, ultra-detailed, 4K.` |
+| 5 | **Great library** | `Great palace library, floor-to-ceiling carved oak shelves filled with leather-bound books, a stone gallery with an iron railing, reading desks with candelabra, a huge arched window with tracery, warm lamplight, dust motes in the beams, dark wood, deep red and gold tones, photorealistic, ultra-detailed, 4K.` |
+| 6 | **Dungeons** | `Castle dungeons deep in the rock, low vaulted stone corridor, iron-barred cells with heavy studded doors, chains and manacles on the walls, straw on the flagstones, a single torch and a shaft of light from a grate high above, damp dark stone, cold blue shadows with warm torch pool, photorealistic, ultra-detailed, 4K.` |
+| 7 | **Great dining hall** | `Great hall of a royal palace, very long oak table set with pewter and gold plate, high ribbed timber roof with carved trusses, tall tracery windows with leaded glass, a minstrels' gallery, a huge hooded fireplace with a roaring fire, banners above the high table, chandeliers of candles, warm festive light, photorealistic, ultra-detailed, 4K.` |
+| 8 | **Kitchens** | `Medieval castle kitchens, vaulted stone room with a vast arched hearth and cauldrons over fire, hanging game and dried herbs, long scrubbed oak tables, copper pots and iron utensils, sacks and barrels, servants' doorways, smoky warm firelight and cool daylight from a high window, photorealistic, ultra-detailed, 4K.` |
+| 9 | **Armoury** | `Castle armoury, rows of full plate armour on wooden stands, racks of swords and polearms on the walls, shields with heraldry, a workbench with a grindstone and tools, oiled metal and dark timber, dust in the light from a high barred window, cool stone with warm torch accents, photorealistic, ultra-detailed, 4K.` |
+| 10 | **Guest chamber** | `Guest chamber of a castle palace, canopied bed with blue and gold hangings, carved wooden panelling, a stone fireplace with a low fire, a writing table with a map and candles, a leaded window with a view of the sea, a woven rug, warm and cool light mix, photorealistic, ultra-detailed, 4K.` |
+| 11 | **Royal gardens** | `Formal royal terraced garden on a castle plateau, geometric parterres with low hedges and gravel paths, a circular fountain with a carved basin, stone balustrade overlooking the sea far below, topiary, roses, stone benches and statues, the spire-crowned palace behind, late-afternoon golden light, sea haze on the horizon, photorealistic, ultra-detailed, 4K.` |
+| 12 | **Tower interior** | `Interior of a tall round castle tower, spiral stone staircase winding up, deep arrow-slit windows and one large pointed-arch tracery window with leaded glass overlooking the sea, a bell frame above, worn stone steps and iron handrail, a torch bracket, cool daylight with warm accents, photorealistic, ultra-detailed, 4K.` |
+| 13 | **Secret passages** | `Narrow secret passage inside castle walls, rough dark masonry and brick, low arched ceilings, hidden doors of timber and iron, a lit wall lantern casting a warm pool, dust and cobwebs, worn steps, damp cool shadows, photorealistic, ultra-detailed, 4K.` |
+| 14 | **Vaults & cellars** | `Castle vaults and wine cellars cut into rock, massive barrel-vaulted bays of stone, endless rows of oak barrels and casks on timber racks, lantern light on dusty bottles and sacks, a stone stair coming down, cool damp air with warm lantern pools, photorealistic, ultra-detailed, 4K.` |
 
 ---
 
-## 9. Variants / extra shots (optional but useful to me)
+## 7. Component Close-ups (for buildable geometry)
 
 | Sheet | Prompt gist |
 |---|---|
-| **J — Aerial 45°** | "Aerial three-quarter view from 60 m altitude looking down at 45 degrees, whole castle and grounds in frame, same design, same materials, golden hour." |
-| **K — Gate passage** | "Interior of the vaulted gate passage, ribbed stone vault, murder holes in the ceiling, portcullis above, warm light from the courtyard end, dark oak doors." |
-| **L — Keep interior** | "Ground floor of the square keep, massive ashlar walls, a stone spiral stair in the corner turret, a large arched fireplace, arrow slit windows, oak table, iron chandelier with candles, torch light." |
-| **M — Great hall interior** | "Two-storey great hall of the palace, tall pointed-arch mullioned windows with leaded glass, exposed oak trusses, a long oak table, a stone fireplace, a woven tapestry with the castle heraldry, warm candlelight." |
-| **N — Wall-walk** | "View standing on the crenellated wall-walk looking along the curtain wall toward a round corner tower with its conical slate roof, the courtyard and keep below, overcast daylight." |
+| **Summit palace hero** | `Close view of the spire-crowned palace on the summit rock: one huge central spire with gilded finial, six secondary conical-roofed spires, flying buttresses, tall tracery windows, rose window, crenellated round towers, ceremonial ramp with a monumental pointed-arch gate, warm sandstone, dark slate, gold, banners — three-quarter view, golden hour, photorealistic, 4K.` |
+| **Main gatehouse front** | `Straight-on view of the main castle gatehouse: pointed arch 6 by 9 m with bold voussoirs, twin portcullises, murder holes, flanking round towers with machicolation rings and conical slate roofs, drawbridge over a dry rock ditch, barbican stubs, guards' walkway, weathered granite, banners — photorealistic, 4K.` |
+| **Causeway bridge** | `The 260 m arched stone causeway bridge viewed from the water: fourteen semicircular spans, cutwater piers, 9 m deck with stone balustrade, carved lamp columns, a twin-towered bridge gatehouse at the far end, seabirds, gentle swell, golden-hour light, photorealistic, 4K.` |
+| **Harbour** | `Working medieval harbour at the foot of a cliff castle: stone quays, timber pile jetties, steep-roofed warehouses, a timber crane, moored three-masted ships, fishing boats, barrels, nets, crates, stone stairs cut into the rock, gulls, cool morning light on the water, photorealistic, 4K.` |
+| **Waterfalls & cliff** | `Stratified sea cliff with three waterfalls of 46, 62 and 30 m plunging into the sea, spray and foam, moss and lichen on wet stone, a small plunge pool, seabirds, the terraced town walls and rooftops above the cliff edge, late-afternoon light, photorealistic, 4K.` |
+| **Texture swatch board** | `Material swatch board, twelve squares in a 6 by 2 grid with thin gutters, each a flat seamless sample under even light with no shadows: warm sandstone ashlar, grey granite, sea-weathered mossy stone, dark slate roof, terracotta roof tiles, light oak timber, dark walnut panelling, pale veined marble, deep red wool fabric with gold embroidery, brown leather, woven carpet, leaded glass with diamond quarries. Technical texture-reference sheet, sharp macro detail, 4K, no watermark, no text.` |
+
+---
+
+## 8. PREFIX / NEGATIVE
+
+**PREFIX — add to the start of every prompt**
+```text
+Consistent with the reference design: coastal castle-city on a rocky promontory, three concentric wall circuits, six terraced town levels, spire-crowned palatial cathedral on the summit, harbour below, long arched causeway bridge, three waterfalls, warm sandstone and grey granite, dark blue-grey slate roofs, crimson and gold banners, temperate maritime climate with light moss and salt weathering, golden-hour or cool-night light as specified.
+```
+
+**NEGATIVE — use with every prompt**
+```text
+cartoon, anime, painterly illustration, low-poly, toy-like, plastic look, neon colours, purple magic glow, floating structures, dragons, sci-fi, modern vehicles, power lines, text, watermark, signature, extra fingers, deformed architecture, inconsistent tower count, castle on flat ground, desert, tropical, snow-covered castle, heavy vignette, fog hiding the architecture, warped perspective, fisheye.
+```
+
+> **For 3D reconstruction I need, at minimum:** Sheet A (hero), Sheet B (map), Sheet F (elevations + silhouette), and the four citadel close-ups. Everything else is a bonus that improves interior fidelity.
