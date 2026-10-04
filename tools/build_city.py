@@ -39,6 +39,12 @@ MAT = {
     "tapestry":   ("fabric_tapestry",          3.0, (0.55, 0.42, 0.30)),
     "leather":    ("leather_hide",             2.0, (0.38, 0.26, 0.16)),
     "rose":       ("glass_stained_rose",       1.0, (0.78, 0.72, 0.62)),
+    # مواد الداخليات
+    "flagstone":  ("stone_flagstone_floor",    4.0, (0.62, 0.60, 0.56)),
+    "carpet":     ("fabric_carpet_woven",      3.0, (0.46, 0.18, 0.16)),
+    "plank":      ("wood_plank_floor",         3.0, (0.42, 0.30, 0.20)),
+    "rockfloor":  ("rock_cliff_strata",        5.0, (0.30, 0.31, 0.32)),
+    "walnut":     ("wood_walnut_panel",        3.0, (0.34, 0.23, 0.16)),
     # جبال الأفق البعيد (في الصورة المرجعية: قمم ثلجية عبر الضباب)
     "mountain":   ("rock_cliff_strata",       26.0, (0.20, 0.24, 0.335)),
     "snow":       ("plaster_lime_town",       22.0, (0.70, 0.77, 0.88)),
@@ -62,6 +68,126 @@ TERRACES = [
 WALL_RINGS = [(22.0, 15.0, 4.0), (44.0, 13.0, 3.4), (70.0, 11.0, 2.8)]
 CAUSEWAY = dict(len=176.0, arches=8, deck_w=9.5, deck_z=15.0)
 WATERFALLS = [(206.0, 62.0, 11.0, 72.0), (224.0, 38.0, 8.0, 47.0)]   # (زاوية°, ارتفاع, عرض, منسوب أعلى)
+
+
+INTERIORS = [
+    # (الاسم، العرض، العمق، الأرضية، الجدار، أثاث)
+    ("main_gatehouse",    30, 20, "flagstone", "granite",  ("door", "bench", "torch")),
+    ("inner_courtyard",   44, 24, "flagstone", "granite",  ("tree", "fountain", "bench")),
+    ("state_corridor",    52, 12, "marble",    "plaster",  ("tapestry", "sconce", "bench")),
+    ("kings_bedchamber",  26, 20, "carpet",    "plaster",  ("bed", "chest", "sconce")),
+    ("great_library",     34, 22, "plank",     "walnut",   ("shelf", "table", "sconce")),
+    ("dungeons",          40, 18, "rockfloor", "granite",  ("cell", "shackle", "torch")),
+    ("great_dining_hall", 46, 24, "flagstone", "granite",  ("table_big", "bench", "fireplace")),
+    ("kitchens",          30, 20, "flagstone", "plaster",  ("hearth", "barrel", "table")),
+    ("armoury",           28, 18, "flagstone", "granite",  ("rack", "anvil", "barrel")),
+    ("guest_chamber",     24, 18, "carpet",    "plaster",  ("bed", "table", "sconce")),
+    ("royal_gardens",     48, 30, "grass",     "granite",  ("tree", "fountain", "bench")),
+    ("tower_interior",    16, 16, "flagstone", "granite",  ("stair", "sconce", "bench")),
+    ("secret_passages",   44, 8,  "rockfloor", "granite",  ("torch", "door", "arch")),
+    ("vaults_cellars",    32, 20, "rockfloor", "granite",  ("vault", "barrel", "chest")),
+]
+IFLOOR = {"flagstone": "stone_flagstone_floor", "marble": "marble_floor_light",
+          "carpet": "fabric_carpet_woven", "plank": "wood_plank_floor",
+          "rockfloor": "rock_cliff_strata", "grass": "terrain_grass"}
+IWALL = {"granite": "stone_granite_wall", "plaster": "plaster_lime_town", "walnut": "wood_walnut_panel"}
+
+
+def _ifurn(mesh, kind, x0, y0, x1, y1, z, WF, WW):
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    if kind == "bed":
+        add_box(mesh, cx - 1.0, y0 + 2.0, z, cx + 1.0, y0 + 4.6, z + 0.6, "wood")
+        add_box(mesh, cx - 0.95, y0 + 2.1, z + 0.6, cx + 0.95, y0 + 4.5, z + 1.0, "leather")
+    elif kind == "table":
+        add_box(mesh, cx - 1.3, cy - 0.9, z + 0.75, cx + 1.3, cy + 0.9, z + 0.95, "wood")
+    elif kind == "table_big":
+        add_box(mesh, x0 + 3, cy - 1.6, z + 0.8, x1 - 3, cy + 1.6, z + 1.05, "wood")
+        for k in range(6):
+            add_box(mesh, x0 + 5 + k * 3.6, cy - 2.6, z, x0 + 6.2 + k * 3.6, cy - 1.8, z + 0.5, "wood")
+            add_box(mesh, x0 + 5 + k * 3.6, cy + 1.8, z, x0 + 6.2 + k * 3.6, cy + 2.6, z + 0.5, "wood")
+    elif kind == "bench":
+        for k in range(3):
+            bx = x0 + 3 + k * ((x1 - x0 - 6) / 2.0)
+            add_box(mesh, bx, y0 + 1.2, z + 0.45, bx + 2.4, y0 + 2.0, z + 0.6, "wood")
+    elif kind == "fireplace" or kind == "hearth":
+        add_box(mesh, cx - 2.4, y0 + 0.2, z, cx + 2.4, y0 + 1.6, z + 3.6, "granite")
+        add_box(mesh, cx - 1.4, y0 + 1.5, z + 0.2, cx + 1.4, y0 + 1.8, z + 1.9, "iron")
+    elif kind == "shelf":
+        for k in range(4):
+            add_box(mesh, x0 + 1.0, y0 + 0.4, z + 1.0 + k * 1.1, x0 + 2.0, y1 - 0.4, z + 1.15 + k * 1.1, "wood")
+    elif kind == "barrel":
+        add_cyl(mesh, cx - 2.0, cy, 0.75, z, z + 1.5, "wood", seg=8)
+        add_cyl(mesh, cx + 2.4, cy + 1.0, 0.7, z, z + 1.4, "wood", seg=8)
+    elif kind == "chest":
+        add_box(mesh, cx + 1.6, cy - 0.7, z, cx + 3.2, cy + 0.7, z + 0.9, "wood")
+    elif kind == "vault":
+        for k in range(3):
+            add_cyl(mesh, cx - 4 + k * 4, cy, 2.0, z, z + 5.5, "granite", seg=10)
+    elif kind == "cell":
+        for k in range(3):
+            add_box(mesh, x0 + 2 + k * 6, y0 + 0.6, z, x0 + 5.4 + k * 6, y0 + 0.9, z + 4.0, "iron")
+    elif kind == "shackle":
+        add_box(mesh, cx, y0 + 1.6, z + 1.5, cx + 0.5, y0 + 1.9, z + 2.0, "iron")
+    elif kind == "rack":
+        for k in range(5):
+            add_cyl(mesh, x0 + 3 + k * 3.0, y0 + 1.6, 0.12, z, z + 3.4, "wood", seg=5)
+    elif kind == "anvil":
+        add_box(mesh, cx - 1.4, cy - 0.8, z, cx + 1.4, cy + 0.8, z + 1.1, "iron")
+    elif kind == "stair":
+        for k in range(10):
+            add_box(mesh, x0 + 2, y0 + 2 + k * 1.4, z + k * 0.6, x1 - 2, y0 + 3.2 + k * 1.4, z + k * 0.6 + 0.5, "granite")
+    elif kind == "tree":
+        add_cyl(mesh, cx - 7, cy, 0.5, z, z + 4.0, "wood", seg=6)
+        add_cone(mesh, cx - 7, cy, 3.4, z + 3.4, z + 10.0, "grass", seg=8)
+        add_cyl(mesh, cx + 7, cy, 0.5, z, z + 4.0, "wood", seg=6)
+        add_cone(mesh, cx + 7, cy, 3.4, z + 3.4, z + 10.0, "grass", seg=8)
+    elif kind == "fountain":
+        add_cyl(mesh, cx, cy, 3.2, z, z + 1.2, "marble", seg=14)
+        add_cyl(mesh, cx, cy, 0.6, z + 1.2, z + 3.4, "marble", seg=8)
+    elif kind == "door":
+        add_box(mesh, cx - 2.0, y0 - 0.2, z, cx + 2.0, y0 + 0.4, z + 4.2, "wood")
+    elif kind == "arch":
+        for k in range(6):
+            add_box(mesh, x0 + 1 + k * 1.6, y0 - 0.4, z + 4.6, x0 + 2.4 + k * 1.6, y0 + 0.3, z + 4.9, "granite")
+    elif kind == "torch" or kind == "sconce":
+        add_cyl(mesh, cx if kind == "torch" else x0 + 1.0, y0 + 0.5, 0.12, z + 2.6, z + 3.4, "iron", seg=5)
+    elif kind == "tapestry":
+        add_box(mesh, x0 + 4, y0 + 0.2, z + 2.0, x0 + 8, y0 + 0.45, z + 6.0, "tapestry")
+
+
+def build_interiors(mesh):
+    """14 داخلية كاملة في منطقة معزولة (إزاحة 0,6000,0) — تُحمَّل عند الدخول فقط."""
+    for i, (name, w, d, fl, wl, props) in enumerate(INTERIORS):
+        cx = 0.0 + (i % 2) * 120.0
+        cy = 6000.0 + (i // 2) * 120.0
+        z = 0.0
+        h = 9.0
+        fm, wm = fl, wl
+        x0, x1 = cx - w / 2, cx + w / 2
+        y0, y1 = cy - d / 2, cy + d / 2
+        # أرضية وسقف
+        mesh.add([(x0, y0, z), (x1, y0, z), (x1, y1, z), (x0, y1, z)], [[0, 1, 2, 3]], fm)
+        mesh.add([(x0, y0, z + h), (x0, y1, z + h), (x1, y1, z + h), (x1, y0, z + h)], [[0, 1, 2, 3]], wm)
+        # جدران بأربعة اتجاهات + فتحة باب في الجدار الجنوبي
+        mesh.add([(x0, y0, z), (x0, y1, z), (x0, y1, z + h), (x0, y0, z + h)], [[0, 1, 2, 3]], wm)
+        mesh.add([(x1, y0, z), (x1, y0, z + h), (x1, y1, z + h), (x1, y1, z)], [[0, 1, 2, 3]], wm)
+        mesh.add([(x0, y1, z), (x1, y1, z), (x1, y1, z + h), (x0, y1, z + h)], [[0, 1, 2, 3]], wm)
+        dw = 2.4
+        mesh.add([(x0, y0, z), (cx - dw, y0, z), (cx - dw, y0, z + 4.4), (x0, y0, z + 4.4)], [[0, 1, 2, 3]], wm)
+        mesh.add([(cx + dw, y0, z), (x1, y0, z), (x1, y0, z + 4.4), (cx + dw, y0, z + 4.4)], [[0, 1, 2, 3]], wm)
+        mesh.add([(cx - dw, y0, z + 4.4), (cx + dw, y0, z + 4.4), (cx + dw, y0, z + h), (cx - dw, y0, z + h)],
+                 [[0, 1, 2, 3]], wm)
+        # نوافذ عالية على الجدارين الطويلين
+        for k in range(max(2, int(w / 7))):
+            wx = x0 + 4 + k * ((w - 8) / max(1, int(w / 7) - 1) if int(w / 7) > 1 else 0)
+            add_box(mesh, wx - 1.0, y1 - 0.3, z + 5.2, wx + 1.0, y1 + 0.3, z + 7.8, "window")
+        # الأثاث
+        for pr in props:
+            _ifurn(mesh, pr, x0, y0, x1, y1, z, fm, wm)
+        # مشعلان عند المدخل
+        for sx in (-1, 1):
+            add_cyl(mesh, cx + sx * (dw + 1.0), y0 + 0.6, 0.12, z + 3.0, z + 3.8, "iron", seg=5)
+            add_cone(mesh, cx + sx * (dw + 1.0), y0 + 0.6, 0.5, z + 3.8, z + 4.6, "window_lit", seg=6)
 
 
 def build_mountains(mesh):
@@ -418,9 +544,9 @@ def build(out_dir):
     # رايات معلّقة على البرجين الغربيين فقط (سارية + قماش) — بلا قطع طائر
     for sx in (-1, 1):
         x0 = sx * 70.0
-        add_cyl(mesh, x0, -6.0, 0.35, zt + 86, zt + 104, "wood", seg=5)      # سارية
-        mesh.add([(x0, -6.0, zt + 102), (x0 + sx * 8.5, -6.0, zt + 102),
-                  (x0 + sx * 8.5, -6.0, zt + 86), (x0, -6.0, zt + 86)],
+        add_cyl(mesh, x0, -6.0, 0.35, zt + 74, zt + 96, "wood", seg=5)      # سارية تنبت من قمة البرج
+        mesh.add([(x0, -6.0, zt + 94), (x0 + sx * 7.0, -6.0, zt + 94),
+                  (x0 + sx * 7.0, -6.0, zt + 80), (x0, -6.0, zt + 80)],
                  [[0, 1, 2, 3]], "banner")
     add_box(mesh, -22, -14, zt + 0.2, 22, -2, zt + 1.2, "marble")            # ساحة القصر
 
@@ -501,6 +627,61 @@ def build(out_dir):
     add_cone(mesh, lx, ly, 7.0, 41, 58, "slate", seg=14)
     add_cyl(mesh, lx, ly, 0.5, 58, 62, "gilded", seg=6)
 
+    # ===== واصل مقوّس: البوابة البحرية ← شاطئ الجزيرة + بوابة محصّنة (barbican) =====
+    print("  · واصل البوابة البحرية إلى الشاطئ + بوابة محصّنة…")
+    ax, ay = 198.0, -256.0                      # البوابة البحرية
+    bx, by = 95.0, -112.0                       # نقطة الالتحام بالجزيرة (حرف مصطبة 12 م)
+    ang = math.atan2(by - ay, bx - ax)
+    Ln = math.hypot(bx - ax, by - ay)
+    mx, my = (ax + bx) / 2, (ay + by) / 2
+    nseg = 8
+    for i in range(nseg + 1):                   # دعائم الواصل
+        tt = i / nseg
+        px, py = ax + (bx - ax) * tt, ay + (by - ay) * tt
+        add_box(mesh, px - 5.6, py - 5.2, -3.0, px + 5.6, py + 5.2, 9.6, "granite", rot=ang)
+        add_box(mesh, px - 6.6, py - 1.6, -3.0, px + 6.6, py + 1.6, 7.4, "granite", rot=ang)   # كتف مائي
+    add_box(mesh, mx - Ln / 2, my - 5.0, 9.6, mx + Ln / 2, my + 5.0, 13.0, "granite", rot=ang)  # السطح
+    for sy in (-1, 1):                          # درابزين
+        add_box(mesh, mx - Ln / 2, my + sy * 5.6 - 0.6, 13.0, mx + Ln / 2, my + sy * 5.6 + 0.6, 15.0,
+                "granite", rot=ang)
+    for i in range(0, nseg + 1, 2):             # فوانيس الواصل
+        tt = i / nseg
+        px, py = ax + (bx - ax) * tt, ay + (by - ay) * tt
+        for sy in (-1, 1):
+            add_cyl(mesh, px - math.sin(ang) * sy * 5.6, py + math.cos(ang) * sy * 5.6,
+                    0.4, 15.0, 18.0, "granite", seg=6)
+            add_box(mesh, px - math.sin(ang) * sy * 5.6 - 0.8, py + math.cos(ang) * sy * 5.6 - 0.8,
+                    18.0, px - math.sin(ang) * sy * 5.6 + 0.8, py + math.cos(ang) * sy * 5.6 + 0.8,
+                    18.9, "gilded")
+
+    # البوابة المحصّنة عند الالتحام بالجزيرة: برجان + بنتان + متاريس مزدوجة + ميزابيات
+    px_, py_ = -math.sin(ang), math.cos(ang)
+    for sx in (-1, 1):
+        tx, ty = bx + px_ * sx * 13.0, by + py_ * sx * 13.0
+        add_cyl(mesh, tx, ty, 7.6, -6.0, 30.0, "granite", seg=14)
+        add_machicolation(mesh, tx, ty, 7.6, 28.0)
+        add_cone(mesh, tx, ty, 9.8, 32.0, 50.0, "slate", seg=14)
+        add_cyl(mesh, tx, ty, 0.45, 50.0, 56.0, "gilded", seg=6)
+        for k in range(3):                                                       # بنتان (رماح قتالية)
+            ox = px_ * sx * 13.0 + math.cos(ang) * (k - 1) * 2.6
+            oy = py_ * sx * 13.0 + math.sin(ang) * (k - 1) * 2.6
+            add_cyl(mesh, bx + ox, by + oy, 0.55, 28.0, (42.0 if k == 1 else 38.0), "wood", seg=6)
+            add_cone(mesh, bx + ox, by + oy, 0.8, (42.0 if k == 1 else 38.0),
+                     (44.4 if k == 1 else 40.4), "iron", seg=6)
+    add_box(mesh, bx - 9.5, by - 5.0, 15.0, bx + 9.5, by + 5.0, 26.0, "granite", rot=ang)   # كتلة البوابة
+    add_machicolation(mesh, bx, by, 10.5, 26.0, seg=12)
+    for k in range(4):                                                          # متاريس مزدوجة فوق القوس
+        add_box(mesh, bx - 9.5 + k * 5.2, by - 5.6, 26.0, bx - 7.4 + k * 5.2, by + 5.6, 28.4, "granite", rot=ang)
+    for k in range(8, 0, -1):                                                   # متاريس حديد (portcullis)
+        add_box(mesh, bx - 4.4, by - 0.5, -4.0 + k * 2.2, bx + 4.4, by + 0.5, -3.7 + k * 2.2, "iron", rot=ang)
+    for k in range(8):                                                          # تماثيل/فوانيس على الواصل
+        tt = (k + 0.5) / 8
+        px, py = ax + (bx - ax) * tt, ay + (by - ay) * tt
+        for sy in (-1, 1):
+            qx, qy = px + px_ * sy * 6.4, py + py_ * sy * 6.4
+            add_box(mesh, qx - 1.0, qy - 1.0, 13.4, qx + 1.0, qy + 1.0, 15.0, "granite", rot=ang)
+            add_cyl(mesh, qx, qy, 0.4, 15.0, 17.6, "gilded", seg=6)
+
     # ===== الشلالان =====
     print("  · الشلالان…")
     for (ang_deg, wf_h, wf_w, top_z) in WATERFALLS:
@@ -536,6 +717,10 @@ def build(out_dir):
             add_box(mesh, x0, y0, -18, x0 + step, y0 + step, 0.0, "water")
 
     # ===== نتوءات الجرف الرأسية (أسنان صخرية على الوجه الخارجي) =====
+    # ===== الـ14 داخلية (منطقة منفصلة، إزاحة 0,6000,0) =====
+    print("  · الداخليات الأربع عشرة…")
+    build_interiors(mesh)
+
     print("  · جبال الأفق البعيد (قمم ثلجية)…")
     build_mountains(mesh)
 

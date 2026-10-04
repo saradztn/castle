@@ -94,6 +94,26 @@ newmtl mat_rose
 Kd 0.780 0.720 0.620
 map_Kd textures/src/glass_stained_rose_albedo.png
 
+newmtl mat_flagstone
+Kd 0.620 0.600 0.560
+map_Kd textures/src/stone_flagstone_floor_albedo.png
+
+newmtl mat_carpet
+Kd 0.460 0.180 0.160
+map_Kd textures/src/fabric_carpet_woven_albedo.png
+
+newmtl mat_plank
+Kd 0.420 0.300 0.200
+map_Kd textures/src/wood_plank_floor_albedo.png
+
+newmtl mat_rockfloor
+Kd 0.300 0.310 0.320
+map_Kd textures/src/rock_cliff_strata_albedo.png
+
+newmtl mat_walnut
+Kd 0.340 0.230 0.160
+map_Kd textures/src/wood_walnut_panel_albedo.png
+
 newmtl mat_mountain
 Kd 0.200 0.240 0.335
 map_Kd textures/src/rock_cliff_strata_albedo.png

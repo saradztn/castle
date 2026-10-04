@@ -1,0 +1,240 @@
+[
+ {
+  "id": "main_gatehouse",
+  "name": "main_gatehouse",
+  "w": 30,
+  "d": 20,
+  "x": 95.0,
+  "y": -112.0,
+  "z": 15.0,
+  "ix": 0.0,
+  "iy": 6000.0,
+  "iz": 2.0,
+  "props": [
+   "door",
+   "bench",
+   "torch"
+  ]
+ },
+ {
+  "id": "inner_courtyard",
+  "name": "inner_courtyard",
+  "w": 44,
+  "d": 24,
+  "x": 30.0,
+  "y": -6.0,
+  "z": 98.0,
+  "ix": 120.0,
+  "iy": 6000.0,
+  "iz": 2.0,
+  "props": [
+   "tree",
+   "fountain",
+   "bench"
+  ]
+ },
+ {
+  "id": "state_corridor",
+  "name": "state_corridor",
+  "w": 52,
+  "d": 12,
+  "x": 62.0,
+  "y": -40.0,
+  "z": 70.0,
+  "ix": 0.0,
+  "iy": 6120.0,
+  "iz": 2.0,
+  "props": [
+   "tapestry",
+   "sconce",
+   "bench"
+  ]
+ },
+ {
+  "id": "kings_bedchamber",
+  "name": "kings_bedchamber",
+  "w": 26,
+  "d": 20,
+  "x": 0.0,
+  "y": 0.0,
+  "z": 112.0,
+  "ix": 120.0,
+  "iy": 6120.0,
+  "iz": 2.0,
+  "props": [
+   "bed",
+   "chest",
+   "sconce"
+  ]
+ },
+ {
+  "id": "great_library",
+  "name": "great_library",
+  "w": 34,
+  "d": 22,
+  "x": 52.0,
+  "y": -22.0,
+  "z": 84.0,
+  "ix": 0.0,
+  "iy": 6240.0,
+  "iz": 2.0,
+  "props": [
+   "shelf",
+   "table",
+   "sconce"
+  ]
+ },
+ {
+  "id": "dungeons",
+  "name": "dungeons",
+  "w": 40,
+  "d": 18,
+  "x": -180.0,
+  "y": -230.0,
+  "z": 26.0,
+  "ix": 120.0,
+  "iy": 6240.0,
+  "iz": 2.0,
+  "props": [
+   "cell",
+   "shackle",
+   "torch"
+  ]
+ },
+ {
+  "id": "great_dining_hall",
+  "name": "great_dining_hall",
+  "w": 46,
+  "d": 24,
+  "x": 46.0,
+  "y": -52.0,
+  "z": 42.0,
+  "ix": 0.0,
+  "iy": 6360.0,
+  "iz": 2.0,
+  "props": [
+   "table_big",
+   "bench",
+   "fireplace"
+  ]
+ },
+ {
+  "id": "kitchens",
+  "name": "kitchens",
+  "w": 30,
+  "d": 20,
+  "x": 58.0,
+  "y": -50.0,
+  "z": 56.0,
+  "ix": 120.0,
+  "iy": 6360.0,
+  "iz": 2.0,
+  "props": [
+   "hearth",
+   "barrel",
+   "table"
+  ]
+ },
+ {
+  "id": "armoury",
+  "name": "armoury",
+  "w": 28,
+  "d": 18,
+  "x": 20.0,
+  "y": -38.0,
+  "z": 22.0,
+  "ix": 0.0,
+  "iy": 6480.0,
+  "iz": 2.0,
+  "props": [
+   "rack",
+   "anvil",
+   "barrel"
+  ]
+ },
+ {
+  "id": "guest_chamber",
+  "name": "guest_chamber",
+  "w": 24,
+  "d": 18,
+  "x": 30.0,
+  "y": -46.0,
+  "z": 30.0,
+  "ix": 120.0,
+  "iy": 6480.0,
+  "iz": 2.0,
+  "props": [
+   "bed",
+   "table",
+   "sconce"
+  ]
+ },
+ {
+  "id": "royal_gardens",
+  "name": "royal_gardens",
+  "w": 48,
+  "d": 30,
+  "x": 92.0,
+  "y": -6.0,
+  "z": 98.0,
+  "ix": 0.0,
+  "iy": 6600.0,
+  "iz": 2.0,
+  "props": [
+   "tree",
+   "fountain",
+   "bench"
+  ]
+ },
+ {
+  "id": "tower_interior",
+  "name": "tower_interior",
+  "w": 16,
+  "d": 16,
+  "x": 70.0,
+  "y": -6.0,
+  "z": 112.0,
+  "ix": 120.0,
+  "iy": 6600.0,
+  "iz": 2.0,
+  "props": [
+   "stair",
+   "sconce",
+   "bench"
+  ]
+ },
+ {
+  "id": "secret_passages",
+  "name": "secret_passages",
+  "w": 44,
+  "d": 8,
+  "x": -10.0,
+  "y": -2.0,
+  "z": -2.0,
+  "ix": 0.0,
+  "iy": 6720.0,
+  "iz": 2.0,
+  "props": [
+   "torch",
+   "door",
+   "arch"
+  ]
+ },
+ {
+  "id": "vaults_cellars",
+  "name": "vaults_cellars",
+  "w": 32,
+  "d": 20,
+  "x": -24.0,
+  "y": 10.0,
+  "z": -30.0,
+  "ix": 120.0,
+  "iy": 6720.0,
+  "iz": 2.0,
+  "props": [
+   "vault",
+   "barrel",
+   "chest"
+  ]
+ }
+]

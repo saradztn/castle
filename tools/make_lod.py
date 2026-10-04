@@ -20,6 +20,8 @@ import numpy as np
 
 # ============ قواعد تقسيم الأجزاء (بالمنطقة) ============
 def part_of(cx, cy, cz):
+    if cy > 5000.0:
+        return "interiors"                     # الـ14 داخلية (منطقة الإزاحة 0,6000,0)
     if cz >= 100.0:
         return "palace"
     if cx > 175.0:

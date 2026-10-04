@@ -6,33 +6,39 @@
     "distant": 1666
   },
   "town": {
-    "full": 12618,
-    "medium": 11328,
-    "low": 7288,
-    "distant": 5082
+    "full": 13070,
+    "medium": 11759,
+    "low": 7538,
+    "distant": 5182
   },
   "causeway": {
-    "full": 13017,
-    "medium": 11954,
-    "low": 9211,
-    "distant": 7232
+    "full": 12334,
+    "medium": 11251,
+    "low": 8472,
+    "distant": 6478
   },
   "walls": {
-    "full": 6807,
-    "medium": 5903,
-    "low": 3965,
+    "full": 6814,
+    "medium": 5910,
+    "low": 3967,
     "distant": 2778
   },
   "harbour": {
-    "full": 3622,
-    "medium": 3301,
-    "low": 2868,
-    "distant": 2522
+    "full": 3821,
+    "medium": 3455,
+    "low": 2964,
+    "distant": 2596
   },
   "cliff": {
-    "full": 2404,
-    "medium": 2399,
-    "low": 2225,
-    "distant": 2109
+    "full": 1803,
+    "medium": 1743,
+    "low": 1520,
+    "distant": 1376
+  },
+  "interiors": {
+    "full": 3135,
+    "medium": 2591,
+    "low": 2042,
+    "distant": 1773
   }
 }

@@ -21,11 +21,13 @@ CASTLE = {
     glowRange  = 420,            -- مدى رسم هالات المصابيح (متر)
 
     -- ===== LOD =====
+    -- 7 أجزاء × 4 مستويات (تنتجها tools/make_lod.py إلى models/parts و models/lod)
+    parts = { "palace", "walls", "town", "harbour", "causeway", "cliff", "interiors" },
     lod = {
-        { name = "high",    distance = 320,  model = "models/lod/castle_high.dff"   },
-        { name = "medium",  distance = 850,  model = "models/lod/castle_medium.dff" },
-        { name = "low",     distance = 1800, model = "models/lod/castle_low.dff"    },
-        { name = "distant", distance = 4200, model = "models/lod/castle_distant.dff"},
+        { level = 1, name = "high",    distance = 320,  path = "models/parts/%s.dff"       },
+        { level = 2, name = "medium",  distance = 850,  path = "models/lod/%s_medium.dff"  },
+        { level = 3, name = "low",     distance = 1800, path = "models/lod/%s_low.dff"     },
+        { level = 4, name = "distant", distance = 4200, path = "models/lod/%s_distant.dff" },
     },
 
     -- ===== مصفوفة الإضاءة الليلية =====

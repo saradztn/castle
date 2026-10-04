@@ -6,6 +6,27 @@
 local insideId = nil
 local fading = false
 
+-- ================= مواضع الداخليات =================
+-- تُقرأ من mta/data/interiors.json (مولّدة من الهندسة الفعلية):
+--   x,y,z  = الباب الخارجي في المدينة
+--   ix,iy,iz = موضع الولادة داخل الغرفة في منطقة الإزاحة (0,6000,0)
+local function loadInteriorDefs()
+    if fileExists("data/interiors.json") then
+        local f = fileOpen("data/interiors.json")
+        local list = fromJSON(fileRead(f, fileGetSize(f))) or {}
+        fileClose(f)
+        if #list > 0 then return list end
+    end
+    return CASTLE.interiors or {}
+end
+
+local function ipos(it)
+    local off = CASTLE.interiorOffset or { x = 0, y = 0, z = 0 }
+    return it.ix or (it.x + off.x),
+           it.iy or (it.y + off.y),
+           (it.iz or (it.z + off.z + 2)) + 2
+end
+
 local function fade(toBlack, ms, cb)
     if fading then return end
     fading = true
@@ -25,18 +46,17 @@ local function fade(toBlack, ms, cb)
 end
 
 local function getInterior(id)
-    for _, it in ipairs(CASTLE.interiors or {}) do
+    for _, it in ipairs(INTERIORS) do
         if it.id == id then return it end
     end
 end
 
 local function enterInterior(it)
-    local off = CASTLE.interiorOffset
     fade(true, 260, function(a)
         dxDrawRectangle(0, 0, guiGetScreenSize(), 1)   -- (يُرسم في onClientRender الفعلي)
     end)
     setTimer(function()
-        setElementPosition(localPlayer, it.x + off.x, it.y + off.y, it.z + off.z + 2)
+        setElementPosition(localPlayer, ipos(it))
         setElementFrozen(localPlayer, false)
         insideId = it.id
         fade(false, 320)
@@ -61,9 +81,11 @@ local function renderFade()
     dxDrawRectangle(0, 0, sw, sh, tocolor(0, 0, 0, alpha), false)
 end
 
+local INTERIORS = {}
+
 addEventHandler("onClientResourceStart", resourceRoot, function()
-    local off = CASTLE.interiorOffset
-    for _, it in ipairs(CASTLE.interiors or {}) do
+    INTERIORS = loadInteriorDefs()
+    for _, it in ipairs(INTERIORS) do
         -- مدخل خارجي
         local mOut = createMarker(it.x, it.y, it.z + 1.2, "cylinder", 2.4, 255, 200, 90, 90)
         setElementData(mOut, "castle:interior", it.id)
@@ -72,7 +94,8 @@ addEventHandler("onClientResourceStart", resourceRoot, function()
             enterInterior(it)
         end)
         -- مخرج داخلي
-        local mIn = createMarker(it.x + off.x, it.y + off.y, it.z + off.z + 2.2, "cylinder", 2.4, 120, 200, 255, 90)
+        local ix, iy, iz = ipos(it)
+        local mIn = createMarker(ix, iy, iz + 1.0, "cylinder", 2.4, 120, 200, 255, 90)
         addEventHandler("onClientMarkerHit", mIn, function(hit, dim)
             if hit ~= localPlayer or not dim then return end
             exitInterior(it)
@@ -82,6 +105,7 @@ addEventHandler("onClientResourceStart", resourceRoot, function()
         setElementData(mOut, "castle:def", it.id)
     end
     addEventHandler("onClientRender", root, renderFade)
+    outputDebugString(("[CASTLE] %d داخلية جاهزة (منطقة الإزاحة)"):format(#INTERIORS), 3)
 end)
 
 function getInsideInterior()
